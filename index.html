@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>The Five Rings • VMSS Civilization</title>
+  <meta name="description" content="The Five Rings is a proposed civilization model built around layered governance, technological accountability, and consequence-bound freedom." />
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    const saved = localStorage.getItem('theme') ||
+                  (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+    document.documentElement.setAttribute('data-theme', saved);
+  </script>
+</head>
+<body class="bg-[var(--bg-primary)] text-[var(--text-primary)] flex flex-col min-h-screen">
+<div id="navbar-placeholder"></div>
+
+<main class="flex-1">
+
+  <!-- Hero -->
+  <section class="pt-36 pb-24 px-6">
+    <div class="max-w-4xl mx-auto text-center">
+      <div class="inline-flex items-center gap-2 mb-6 rounded-full border border-[var(--border)] bg-[var(--bg-secondary)] px-4 py-2 text-xs uppercase tracking-[0.28em] text-[var(--text-muted)]">
+        <span class="text-[var(--accent)]">⟐</span>
+        Civilization Framework
+      </div>
+      <h1 class="text-5xl md:text-7xl font-black tracking-tight mb-6">The Five Rings</h1>
+      <p class="text-xl md:text-2xl text-[var(--text-secondary)] mb-4 max-w-2xl mx-auto">A voluntary society of moral causality</p>
+      <p class="text-base text-[var(--text-muted)] max-w-2xl mx-auto mb-10">The Five Rings is a proposed civilization model built around layered governance, technological accountability, and consequence-bound freedom. Safety, abundance, continuity, and descent are not rhetorical promises — they are structured outcomes tied to behavior.</p>
+      <div class="flex flex-wrap justify-center gap-4 mb-12">
+        <a href="layers.html" class="bg-[var(--accent)] hover:bg-amber-500 text-black font-bold px-8 py-4 rounded-2xl transition">Explore the Layers</a>
+        <a href="charter.html" class="border border-[var(--border-strong)] hover:border-[var(--accent)] text-[var(--text-primary)] font-semibold px-8 py-4 rounded-2xl transition">Read the Charter</a>
+        <a href="whitepaper.html" class="border border-[var(--border)] hover:border-[var(--accent)] text-[var(--text-secondary)] font-semibold px-8 py-4 rounded-2xl transition">Read the Whitepaper</a>
+      </div>
+      <p class="text-sm text-[var(--text-muted)]">New here? Follow this path:
+        <a href="layers.html" class="text-[var(--accent)] hover:text-[var(--accent-soft)] transition">Layers</a> →
+        <a href="systems.html" class="text-[var(--accent)] hover:text-[var(--accent-soft)] transition">Systems</a> →
+        <a href="simulations.html" class="text-[var(--accent)] hover:text-[var(--accent-soft)] transition">Simulations</a> →
+        <a href="charter.html" class="text-[var(--accent)] hover:text-[var(--accent-soft)] transition">Charter</a>
+      </p>
+    </div>
+  </section>
+
+  <!-- Key metrics -->
+  <section class="pb-16 px-6">
+    <div class="max-w-4xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-4">
+      <div class="bg-[var(--bg-secondary)] rounded-2xl border border-[var(--border)] p-6 text-center">
+        <div class="text-3xl font-black text-[var(--accent)]">5</div>
+        <div class="text-xs uppercase tracking-widest text-[var(--text-muted)] mt-1">Governance Rings</div>
+      </div>
+      <div class="bg-[var(--bg-secondary)] rounded-2xl border border-[var(--border)] p-6 text-center">
+        <div class="text-3xl font-black text-[var(--accent)]">+1 to -3</div>
+        <div class="text-xs uppercase tracking-widest text-[var(--text-muted)] mt-1">Civic Gradient</div>
+      </div>
+      <div class="bg-[var(--bg-secondary)] rounded-2xl border border-[var(--border)] p-6 text-center">
+        <div class="text-3xl font-black text-[var(--accent)]">24/7</div>
+        <div class="text-xs uppercase tracking-widest text-[var(--text-muted)] mt-1">Implant Mediation</div>
+      </div>
+      <div class="bg-[var(--bg-secondary)] rounded-2xl border border-[var(--border)] p-6 text-center">
+        <div class="text-3xl font-black text-[var(--accent)]">Voluntary</div>
+        <div class="text-xs uppercase tracking-widest text-[var(--text-muted)] mt-1">Entry Principle</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Three pillars -->
+  <section class="pb-20 px-6">
+    <div class="max-w-4xl mx-auto grid md:grid-cols-3 gap-6">
+      <div class="bg-[var(--bg-secondary)] rounded-3xl border border-[var(--border)] p-8">
+        <h3 class="text-lg font-bold text-[var(--accent)] mb-3">Moral Causality</h3>
+        <p class="text-[var(--text-secondary)] text-sm leading-relaxed">Rights, access, and insulation become legible consequences of conduct rather than ideology or inherited status.</p>
+      </div>
+      <div class="bg-[var(--bg-secondary)] rounded-3xl border border-[var(--border)] p-8">
+        <h3 class="text-lg font-bold text-[var(--accent)] mb-3">Technological Enforcement</h3>
+        <p class="text-[var(--text-secondary)] text-sm leading-relaxed">Brain implants, backup vessels, and AI mediation make continuity and consequence operational rather than rhetorical.</p>
+      </div>
+      <div class="bg-[var(--bg-secondary)] rounded-3xl border border-[var(--border)] p-8">
+        <h3 class="text-lg font-bold text-[var(--accent)] mb-3">Layered Environments</h3>
+        <p class="text-[var(--text-secondary)] text-sm leading-relaxed">Citizens inhabit five distinct civilizational environments based on demonstrated conduct — each complete on its own terms.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- The Five Rings at a glance -->
+  <section class="pb-20 px-6">
+    <div class="max-w-4xl mx-auto">
+      <h2 class="text-3xl font-bold mb-8 text-center">The Five Rings</h2>
+      <div class="space-y-3">
+        <a href="layers.html" class="flex items-center gap-6 bg-[var(--bg-secondary)] hover:border-[var(--accent)] border border-[var(--border)] rounded-2xl p-6 transition group">
+          <div class="text-2xl font-black text-[var(--accent)] w-12 text-center shrink-0">+1</div>
+          <div>
+            <div class="font-semibold text-[var(--text-primary)] group-hover:text-[var(--accent)] transition">Sanctuary</div>
+            <div class="text-sm text-[var(--text-muted)]">Pre-intervention safety. Maximum trust. Selective access.</div>
+          </div>
+        </a>
+        <a href="layers.html" class="flex items-center gap-6 bg-[var(--bg-secondary)] hover:border-[var(--accent)] border border-[var(--border)] rounded-2xl p-6 transition group">
+          <div class="text-2xl font-black text-[var(--accent)] w-12 text-center shrink-0">0</div>
+          <div>
+            <div class="font-semibold text-[var(--text-primary)] group-hover:text-[var(--accent)] transition">Main Layer</div>
+            <div class="text-sm text-[var(--text-muted)]">The proving ground. Full freedom, full consequence, full life.</div>
+          </div>
+        </a>
+        <a href="layers.html" class="flex items-center gap-6 bg-[var(--bg-secondary)] hover:border-[var(--accent)] border border-[var(--border)] rounded-2xl p-6 transition group">
+          <div class="text-2xl font-black text-[var(--accent)] w-12 text-center shrink-0">-1</div>
+          <div>
+            <div class="font-semibold text-[var(--text-primary)] group-hover:text-[var(--accent)] transition">Noncompliance — The Balanced Layer</div>
+            <div class="text-sm text-[var(--text-muted)]">Partial institutional presence. Rehabilitation pathway open.</div>
+          </div>
+        </a>
+        <a href="layers.html" class="flex items-center gap-6 bg-[var(--bg-secondary)] hover:border-[var(--accent)] border border-[var(--border)] rounded-2xl p-6 transition group">
+          <div class="text-2xl font-black text-[var(--accent)] w-12 text-center shrink-0">-2</div>
+          <div>
+            <div class="font-semibold text-[var(--text-primary)] group-hover:text-[var(--accent)] transition">Violent Offense — The Lower Restrictions Layer</div>
+            <div class="text-sm text-[var(--text-muted)]">Predominantly private economy. Reduced institutional presence. Permanent reassignment.</div>
+          </div>
+        </a>
+        <a href="layers.html" class="flex items-center gap-6 bg-[var(--bg-secondary)] hover:border-[var(--accent)] border border-[var(--border)] rounded-2xl p-6 transition group">
+          <div class="text-2xl font-black text-[var(--accent)] w-12 text-center shrink-0">-3</div>
+          <div>
+            <div class="font-semibold text-[var(--text-primary)] group-hover:text-[var(--accent)] transition">Terminal — The Freedom Layer</div>
+            <div class="text-sm text-[var(--text-muted)]">No institutional intervention. Fully private frontier economy. Death is final.</div>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Full site callout -->
+  <section class="pb-24 px-6">
+    <div class="max-w-4xl mx-auto">
+      <div class="bg-[var(--bg-secondary)] rounded-3xl border border-[var(--border-strong)] p-10 text-center">
+        <div class="text-xs uppercase tracking-widest text-[var(--accent)] mb-3">Full Site Available</div>
+        <h3 class="text-2xl font-bold mb-3">Want the complete picture?</h3>
+        <p class="text-[var(--text-secondary)] mb-6 max-w-xl mx-auto text-sm leading-relaxed">The full site includes interactive diagrams, detailed layer dossiers with narrative simulations, STI console, current-state technology annotations, the complete whitepaper, and extended FAQ edge cases.</p>
+        <a href="https://jasonhuang24.github.io/VMSS/" class="inline-block bg-[var(--accent)] hover:bg-amber-500 text-black font-bold px-10 py-4 rounded-2xl transition">Explore the Full Site →</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<div id="footer-placeholder"></div>
+<script src="script.js"></script>
+</body>
+</html>

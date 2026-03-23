@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Simulations • The Five Rings</title>
+  <meta name="description" content="Six archetypal resident profiles — one outcome in each layer. What life in The Five Rings actually looks like." />
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    const saved = localStorage.getItem('theme') ||
+                  (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+    document.documentElement.setAttribute('data-theme', saved);
+  </script>
+</head>
+<body class="bg-[var(--bg-primary)] text-[var(--text-primary)] flex flex-col min-h-screen">
+<div id="navbar-placeholder"></div>
+
+<main class="flex-1">
+  <section class="pt-32 pb-24 px-6">
+    <div class="max-w-3xl mx-auto">
+
+      <div class="mb-14">
+        <h1 class="text-5xl font-black tracking-tight mb-4">Simulations</h1>
+        <p class="text-[var(--text-secondary)] text-lg max-w-2xl">Six archetypal profiles — one outcome in each layer. What life in The Five Rings actually looks like from the inside. For full narrative simulations and historical personality case studies, visit the <a href="https://jasonhuang24.github.io/VMSS/simulations.html" class="text-[var(--accent)] hover:text-[var(--accent-soft)] transition">full site</a>.</p>
+      </div>
+
+      <div class="space-y-6">
+
+        <!-- +1 Sanctuary -->
+        <div class="bg-[var(--bg-secondary)] rounded-3xl border border-[var(--border)] overflow-hidden">
+          <button class="w-full px-8 py-6 text-left flex justify-between items-center hover:bg-[var(--bg-primary)] transition" onclick="toggleSim(this)">
+            <div>
+              <div class="text-xs uppercase tracking-widest text-[var(--text-muted)] mb-1">+1 Sanctuary · STI 85–100</div>
+              <h2 class="text-2xl font-bold text-[var(--accent)]">The Composer</h2>
+              <div class="text-sm text-[var(--text-muted)] mt-1">Natural Alignment — Immediate Ascension Trajectory</div>
+            </div>
+            <span class="text-3xl transition-transform duration-300 icon ml-4 shrink-0">›</span>
+          </button>
+          <div class="sim-content hidden px-8 pb-8">
+            <p class="text-[var(--text-secondary)] leading-relaxed mb-4">She arrived in VMSS at 31 and spent two years in Main Layer before the ascension review opened — not because she was pursuing it, but because her conduct made it inevitable. Her STI climbed through the consistent quality of her interactions rather than through any deliberate strategy. She is honest in disputes before anyone asks her to be. She follows through on every commitment she makes. The system reads this with the same flat efficiency it reads everything else. Her score simply kept rising.</p>
+            <p class="text-[var(--text-secondary)] leading-relaxed mb-4">In Sanctuary she builds neural musical architectures — experiential works that allow audience members to inhabit emotional states with a specificity that conventional music cannot produce. The work requires the full technical infrastructure that +1 provides, and the social texture of a small-town intimacy that the SADs create. She qualifies for the Cognitive Clarity Domain in her first year. The quarterly reasoning audits make her creative process sharper, not more constrained.</p>
+            <p class="text-[var(--text-secondary)] leading-relaxed mb-4">What she notices most about Sanctuary is something she didn't anticipate: she has stopped scanning faces. In Main Layer the background vigilance was constant — reading exits, reading people, the ambient calculation of shared space with individuals whose intentions are unverified. In +1 that reflex has nothing to feed on. Every STI indicator is deep green. The absence of background threat turns out to produce a quality of attention she can direct entirely toward the work.</p>
+            <p class="text-[var(--text-secondary)] leading-relaxed">Her backup vessel drift risk is assessed at 0.4% — below the already low Sanctuary baseline. The system records her as a long-horizon resident with no predicted volatility. She has not looked at her STI score in eight months. She is working.</p>
+            <div class="mt-4 pt-4 border-t border-[var(--border)] text-sm text-[var(--text-muted)] italic">Key lesson: Some people arrive already living Sanctuary values. The system does not make them who they are — it builds an environment that finally matches it.</div>
+          </div>
+        </div>
+
+        <!-- Main Layer -->
+        <div class="bg-[var(--bg-secondary)] rounded-3xl border border-[var(--border)] overflow-hidden">
+          <button class="w-full px-8 py-6 text-left flex justify-between items-center hover:bg-[var(--bg-primary)] transition" onclick="toggleSim(this)">
+            <div>
+              <div class="text-xs uppercase tracking-widest text-[var(--text-muted)] mb-1">Main Layer (0) · STI 70–84</div>
+              <h2 class="text-2xl font-bold text-[var(--accent)]">The Urban Designer</h2>
+              <div class="text-sm text-[var(--text-muted)] mt-1">Conscious Homecoming — Main Layer by Choice</div>
+            </div>
+            <span class="text-3xl transition-transform duration-300 icon ml-4 shrink-0">›</span>
+          </button>
+          <div class="sim-content hidden px-8 pb-8">
+            <p class="text-[var(--text-secondary)] leading-relaxed mb-4">He arrived from Earth three years ago — a former urban planner from Lagos, practical-minded, analytically sharp. His STI settled at 76 within the first year. Solid, unspectacular, the kind of score the system files without comment. He works as an urban systems designer, a role that qualifies for the Primary Job Subsidy. He works 20 qualifying hours. He spends the rest of his week however he chooses.</p>
+            <p class="text-[var(--text-secondary)] leading-relaxed mb-4">He took a cross-layer research placement in his second year — four months in Sanctuary, three months split between -1 and -2. He wanted to understand what he had chosen before committing to it fully. In Sanctuary the conversations operated at a depth Main Layer rarely sustains. His own thinking sharpened in the absence of friction. In -1 he found people living full, complete lives under reduced privilege — not broken people, people who adapted and continued. -2 was harder. He did his work carefully and did not pretend it was comfortable.</p>
+            <p class="text-[var(--text-secondary)] leading-relaxed mb-4">He returned to Main Layer on a Thursday afternoon. The transition hit him before he had fully processed it intellectually. After months in Sanctuary's low-density trust environment, Main Layer felt like surfacing into noise — and he means that as a compliment. Billions of people moving through the same space at different points on the same journey. Every STI indicator in the crowd telling a different story.</p>
+            <p class="text-[var(--text-secondary)] leading-relaxed">He grew up in Lagos. He understands instinctively what a city at full human density does to the quality of life — not despite the friction but because of it. Sanctuary was extraordinary. Main Layer is alive. He renewed his residency the following morning.</p>
+            <div class="mt-4 pt-4 border-t border-[var(--border)] text-sm text-[var(--text-muted)] italic">Key lesson: Main Layer is not where citizens wait before ascending. For some it is the destination — chosen consciously, eyes open, having seen what lies above and below.</div>
+          </div>
+        </div>
+
+        <!-- -1 Noncompliance -->
+        <div class="bg-[var(--bg-secondary)] rounded-3xl border border-[var(--border)] overflow-hidden">
+          <button class="w-full px-8 py-6 text-left flex justify-between items-center hover:bg-[var(--bg-primary)] transition" onclick="toggleSim(this)">
+            <div>
+              <div class="text-xs uppercase tracking-widest text-[var(--text-muted)] mb-1">-1 Noncompliance · STI 50–69</div>
+              <h2 class="text-2xl font-bold text-[var(--accent)]">The Freight Operator</h2>
+              <div class="text-sm text-[var(--text-muted)] mt-1">Pragmatic Adaptation — Stable Prosperous Life in -1</div>
+            </div>
+            <span class="text-3xl transition-transform duration-300 icon ml-4 shrink-0">›</span>
+          </button>
+          <div class="sim-content hidden px-8 pb-8">
+            <p class="text-[var(--text-secondary)] leading-relaxed mb-4">He descended to -1 six years ago following a contractual fraud violation. Not violent, not predatory — a business dispute that crossed a threshold the system defines precisely and enforces without negotiation. He arrived with his skills, his contacts, and the -1 currency equivalent of a modest restart. A former logistics coordinator with fifteen years of supply chain experience and a reputation that people in the know still recognised.</p>
+            <p class="text-[var(--text-secondary)] leading-relaxed mb-4">Within eight months he had built a private freight operation connecting -1 districts that the automated logistics infrastructure only partially served. The gaps in institutional coverage that make the Balanced Layer harder to live in also make it commercially interesting. By year four his operation employed thirty people, all on 20-hour qualifying schedules that unlocked the Primary Job Subsidy and left genuine discretionary time alongside stable income.</p>
+            <p class="text-[var(--text-secondary)] leading-relaxed mb-4">His STI has recovered to 59. The trajectory is positive. His sister visited him in year four — cross-layer, arriving economically neutral, working a short contract with his freight operation. She asked him whether he had considered the ascension path.</p>
+            <p class="text-[var(--text-secondary)] leading-relaxed">He showed her the books. The tax differential. The regulatory environment. The market gaps that exist in -1 that are already crowded in Main Layer. He updates a spreadsheet quarterly that models his projected wealth accumulation in -1 against a hypothetical return to Main Layer. -1 wins the spreadsheet by a meaningful margin for at least the next decade. The system records this as a stable profile. He records it as a good business decision.</p>
+            <div class="mt-4 pt-4 border-t border-[var(--border)] text-sm text-[var(--text-muted)] italic">Key lesson: Descent is not the end of ambition. For some residents the layer they land in turns out to be the layer their particular combination of skills and economic calculation fits best.</div>
+          </div>
+        </div>
+
+        <!-- -2 Violent Offense -->
+        <div class="bg-[var(--bg-secondary)] rounded-3xl border border-[var(--border)] overflow-hidden">
+          <button class="w-full px-8 py-6 text-left flex justify-between items-center hover:bg-[var(--bg-primary)] transition" onclick="toggleSim(this)">
+            <div>
+              <div class="text-xs uppercase tracking-widest text-[var(--text-muted)] mb-1">-2 Violent Offense · STI 30–49</div>
+              <h2 class="text-2xl font-bold text-[var(--accent)]">The Security Operator</h2>
+              <div class="text-sm text-[var(--text-muted)] mt-1">Frontier Entrepreneur — Prosperous Life in -2</div>
+            </div>
+            <span class="text-3xl transition-transform duration-300 icon ml-4 shrink-0">›</span>
+          </button>
+          <div class="sim-content hidden px-8 pb-8">
+            <p class="text-[var(--text-secondary)] leading-relaxed mb-4">He descended eleven years ago following a conviction the system classified as aggravated coercion. He arrived in -2 with his physical capability, his organisational instincts, and nothing else of material value. He spent his first six months learning the environment the way he had learned every environment he had ever operated in — by watching who had power, how they held it, and what gaps existed.</p>
+            <p class="text-[var(--text-secondary)] leading-relaxed mb-4">-2 had no shortage of people holding power through intimidation. What it had almost none of was anyone holding power through reliability. He started with four people he trusted and a simple offer to a district merchant: one arrangement, one price, guaranteed response time. Word travelled the way word travels in environments where institutional trust is absent — fast and thoroughly.</p>
+            <p class="text-[var(--text-secondary)] leading-relaxed mb-4">Eleven years in, his operation has expanded into four districts. Forty-three employees, most on 20-hour qualifying schedules. He lives in the best part of his district — a secure compound, maintained properly. His STI sits at 38. Within -2 that means something — not as a pathway to anywhere else, but as a social signal that transfers across district lines without needing to be re-earned from scratch.</p>
+            <p class="text-[var(--text-secondary)] leading-relaxed">Permanent reassignment closes the upward pathway. It does not close everything else. When a younger resident asks what he would tell someone just arriving, he does not hesitate: find the thing nobody is doing well and do it better than anyone. This place has more of those gaps than anywhere else in the civilization. That is not a punishment. That is an opportunity.</p>
+            <div class="mt-4 pt-4 border-t border-[var(--border)] text-sm text-[var(--text-muted)] italic">Key lesson: The same qualities that make someone dangerous in the wrong context — drive, organisational capability, willingness to operate outside institutional structures — are the qualities that build something real in an environment where institutions have stepped back.</div>
+          </div>
+        </div>
+
+        <!-- -3 Voluntary -->
+        <div class="bg-[var(--bg-secondary)] rounded-3xl border border-[var(--border)] overflow-hidden">
+          <button class="w-full px-8 py-6 text-left flex justify-between items-center hover:bg-[var(--bg-primary)] transition" onclick="toggleSim(this)">
+            <div>
+              <div class="text-xs uppercase tracking-widest text-[var(--text-muted)] mb-1">-3 Terminal · Voluntary Resident</div>
+              <h2 class="text-2xl font-bold text-[var(--accent)]">The Capital Allocator</h2>
+              <div class="text-sm text-[var(--text-muted)] mt-1">Deliberate Descent — Wealthy Self-Made Life in -3</div>
+            </div>
+            <span class="text-3xl transition-transform duration-300 icon ml-4 shrink-0">›</span>
+          </button>
+          <div class="sim-content hidden px-8 pb-8">
+            <p class="text-[var(--text-secondary)] leading-relaxed mb-4">He arrived in -3 on purpose. He will tell you this without being asked — not because he is defensive, but because the distinction matters. In an environment where most residents arrived through consequence, voluntary presence carries a specific social meaning. He assessed the situation and chose it. That signals something about his judgment that no amount of acquired reputation could communicate as efficiently.</p>
+            <p class="text-[var(--text-secondary)] leading-relaxed mb-4">He was 34 when he filed the voluntary descent application. The psychological screening took five days. He had spent eighteen months researching -3 before filing. What he understood was that it offered something no other layer offered in the same combination: 10–15% taxation, no regulatory infrastructure, no institutional interference in economic activity, and an environment where the only constraints on what you could build were your own capability and the informal social order.</p>
+            <p class="text-[var(--text-secondary)] leading-relaxed mb-4">He spent his first year building relationships rather than revenue. -3 operates on personal trust in the absence of institutional enforcement. By year two he had identified the gap that would become his primary enterprise: -3 had no reliable financial infrastructure. He built a private lending operation — not a bank, a private capital allocation business operating entirely on reputation and contract. By year four it had become the most significant source of private capital in two districts.</p>
+            <p class="text-[var(--text-secondary)] leading-relaxed">He is 51 now. His compound has expanded into something that would register as a small estate. His operation employs 28 people, most on 20-hour qualifying schedules. He retains full upward mobility — voluntary -3 residents hold their ascension pathway open indefinitely. He finds the question uninteresting. The economic environment that suits his specific combination of risk tolerance and institutional skepticism exists here and nowhere else in quite the same form.</p>
+            <div class="mt-4 pt-4 border-t border-[var(--border)] text-sm text-[var(--text-muted)] italic">Key lesson: -3 is the terminal layer of VMSS consequence. It is also, for a meaningful number of its residents, a chosen home — selected deliberately by people whose relationship with institutional authority was always going to end in departure of one kind or another.</div>
+          </div>
+        </div>
+
+        <!-- -3 Punitive -->
+        <div class="bg-[var(--bg-secondary)] rounded-3xl border border-[var(--border)] overflow-hidden">
+          <button class="w-full px-8 py-6 text-left flex justify-between items-center hover:bg-[var(--bg-primary)] transition" onclick="toggleSim(this)">
+            <div>
+              <div class="text-xs uppercase tracking-widest text-[var(--text-muted)] mb-1">-3 Terminal · Punitive Resident</div>
+              <h2 class="text-2xl font-bold text-[var(--accent)]">The New Arrival</h2>
+              <div class="text-sm text-[var(--text-muted)] mt-1">Punitive Reassignment — First Weeks in -3</div>
+            </div>
+            <span class="text-3xl transition-transform duration-300 icon ml-4 shrink-0">›</span>
+          </button>
+          <div class="sim-content hidden px-8 pb-8">
+            <p class="text-[var(--text-secondary)] leading-relaxed mb-4">The first thing he noticed about -3 was the silence where the implant used to be. Not physical silence — the layer is not quiet. But the neural feedback that accompanied every moment of life in higher layers — the ambient awareness of the system watching, logging, assessing — was gone. The implant still sat in his skull. It no longer responded. For someone who had spent years in the system's informational embrace, the absence was disorienting in a way that took weeks to adjust to.</p>
+            <p class="text-[var(--text-secondary)] leading-relaxed mb-4">His public ledger arrived with him. The criminal record log is visible to every private security operator, landlord, employer, and community in -3. The voluntary libertarian community in the better districts read his file within hours of his arrival. He was not admitted to the gated areas. He understood why — they had built something worth protecting and had the private means to protect it.</p>
+            <p class="text-[var(--text-secondary)] leading-relaxed mb-4">Daily survival organised itself around the automated drops — food and water arriving on a fixed schedule in designated zones. Those zones were contested. Within his first month he had affiliated with a crew that controlled access to one of the more productive points. The arrangement required contribution. He contributed. The social contract in -3 is not the civilization's moral logic — it is mutual interest and risk calculation. But it functions.</p>
+            <p class="text-[var(--text-secondary)] leading-relaxed">He knew there was nowhere to go. The resentment toward upper layers — particularly -2, which retained satellite-serviced revival and victim restoration that -3 did not — was a consistent feature of the social psychology around him. He did not produce organised opposition. The walls were not permeable. He settled into the layer's rhythms, which was not the same thing as accepting them.</p>
+            <div class="mt-4 pt-4 border-t border-[var(--border)] text-sm text-[var(--text-muted)] italic">Key lesson: The system responds to execution, not intent. The -3 experience for punitive residents is shaped by what they arrive with — and the public ledger determines where within the layer's internal hierarchy they land from day one.</div>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="mt-10 text-center text-sm text-[var(--text-muted)]">
+        Full narrative simulations and historical personality case studies on the <a href="https://jasonhuang24.github.io/VMSS/simulations.html" class="text-[var(--accent)] hover:text-[var(--accent-soft)] transition">full site →</a>
+      </div>
+
+    </div>
+  </section>
+</main>
+
+<div id="footer-placeholder"></div>
+<script src="script.js"></script>
+<script>
+  function toggleSim(btn) {
+    const content = btn.nextElementSibling;
+    const icon = btn.querySelector('.icon');
+    if (content.classList.contains('hidden')) {
+      content.classList.remove('hidden');
+      icon.style.transform = 'rotate(90deg)';
+    } else {
+      content.classList.add('hidden');
+      icon.style.transform = 'rotate(0deg)';
+    }
+  }
+</script>
+</body>
+</html>

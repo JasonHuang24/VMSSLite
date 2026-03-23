@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>The Layers • The Five Rings</title>
+  <meta name="description" content="Five distinct civilizational environments. Each with its own economic character, enforcement posture, and social texture." />
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    const saved = localStorage.getItem('theme') ||
+                  (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+    document.documentElement.setAttribute('data-theme', saved);
+  </script>
+</head>
+<body class="bg-[var(--bg-primary)] text-[var(--text-primary)] flex flex-col min-h-screen">
+<div id="navbar-placeholder"></div>
+
+<main class="flex-1">
+  <section class="pt-32 pb-20 px-6">
+    <div class="max-w-4xl mx-auto">
+
+      <div class="mb-14 text-center">
+        <h1 class="text-5xl font-black tracking-tight mb-4">The Five Rings</h1>
+        <p class="text-[var(--text-secondary)] text-lg max-w-2xl mx-auto">Five distinct civilizational environments — not a hierarchy of suffering, but a hierarchy of institutional investment. Each layer is complete on its own terms.</p>
+      </div>
+
+      <p class="text-[var(--text-secondary)] leading-relaxed mb-12">As institutional presence withdraws with descent, private enterprise and organic social order expand to fill the space. The higher the layer, the more VMSS maintains on your behalf. The lower the layer, the more that space is filled by private institutions and individual capability. Cross-layer visitation flows downward — citizens may visit layers below their placement, arriving economically neutral in the destination environment.</p>
+
+      <!-- Layer cards -->
+      <div class="space-y-6">
+
+        <!-- +1 -->
+        <div class="bg-[var(--bg-secondary)] rounded-3xl border border-[var(--border)] overflow-hidden">
+          <div class="p-8 border-b border-[var(--border)]">
+            <div class="flex items-start justify-between gap-4 mb-4">
+              <div>
+                <div class="text-xs uppercase tracking-widest text-[var(--text-muted)] mb-1">Heaven Ring · Pre-Intervention</div>
+                <h2 class="text-3xl font-black text-[var(--accent)]">+1 Sanctuary</h2>
+                <p class="text-[var(--text-muted)] text-sm mt-1">Informal name: The Heaven Layer</p>
+              </div>
+              <div class="text-right shrink-0">
+                <div class="text-xs text-[var(--text-muted)]">STI threshold</div>
+                <div class="text-lg font-bold text-[var(--accent)]">85–100</div>
+              </div>
+            </div>
+            <p class="text-[var(--text-secondary)] leading-relaxed">The highest-trust environment. Harm is stopped before it completes — the Threshold Inhibition Protocol halts acts mid-execution via neural inhibition and drone countermeasures. Residents have earned placement through sustained verified non-harmful conduct. The result is an environment defined not by the absence of freedom, but by the absence of threat.</p>
+          </div>
+          <div class="grid md:grid-cols-3 gap-0 divide-y md:divide-y-0 md:divide-x divide-[var(--border)]">
+            <div class="p-6">
+              <div class="text-xs uppercase tracking-widest text-[var(--text-muted)] mb-2">Economy</div>
+              <p class="text-sm text-[var(--text-secondary)]">$10,000/month UBI + Primary Job Subsidy. Full post-scarcity baseline. Shared currency with Main Layer. Stock speculation excluded.</p>
+            </div>
+            <div class="p-6">
+              <div class="text-xs uppercase tracking-widest text-[var(--text-muted)] mb-2">Enforcement</div>
+              <p class="text-sm text-[var(--text-secondary)]">Pre-intervention. Harmful acts cannot complete. Perpetrators reassigned immediately on attempt.</p>
+            </div>
+            <div class="p-6">
+              <div class="text-xs uppercase tracking-widest text-[var(--text-muted)] mb-2">Access</div>
+              <p class="text-sm text-[var(--text-secondary)]">Selective Ascension Domains (SADs) — opt-in purity zones each gated by a single measurable metric. Full augmentation and longevity access.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- 0 -->
+        <div class="bg-[var(--bg-secondary)] rounded-3xl border border-[var(--border)] overflow-hidden">
+          <div class="p-8 border-b border-[var(--border)]">
+            <div class="flex items-start justify-between gap-4 mb-4">
+              <div>
+                <div class="text-xs uppercase tracking-widest text-[var(--text-muted)] mb-1">The Proving Ground · Post-Intervention</div>
+                <h2 class="text-3xl font-black text-[var(--accent)]">Main Layer (0)</h2>
+              </div>
+              <div class="text-right shrink-0">
+                <div class="text-xs text-[var(--text-muted)]">STI threshold</div>
+                <div class="text-lg font-bold text-[var(--accent)]">70–84</div>
+              </div>
+            </div>
+            <p class="text-[var(--text-secondary)] leading-relaxed">Where every citizen begins. The largest ring by population — the density, energy, and variety of a civilization at full human scale. Harmful acts can complete before intervention, which is what makes the choices here real. Full economic support, full personal autonomy, and full access to VMSS technologies. This is where moral character is demonstrated, not assumed.</p>
+          </div>
+          <div class="grid md:grid-cols-3 gap-0 divide-y md:divide-y-0 md:divide-x divide-[var(--border)]">
+            <div class="p-6">
+              <div class="text-xs uppercase tracking-widest text-[var(--text-muted)] mb-2">Economy</div>
+              <p class="text-sm text-[var(--text-secondary)]">$10,000/month UBI + Primary Job Subsidy. Shared currency with Sanctuary. Highly socialised, post-scarcity.</p>
+            </div>
+            <div class="p-6">
+              <div class="text-xs uppercase tracking-widest text-[var(--text-muted)] mb-2">Enforcement</div>
+              <p class="text-sm text-[var(--text-secondary)]">Post-intervention. Acts may complete. Victims restored via backup vessel. Perpetrators reassigned immediately.</p>
+            </div>
+            <div class="p-6">
+              <div class="text-xs uppercase tracking-widest text-[var(--text-muted)] mb-2">Mobility</div>
+              <p class="text-sm text-[var(--text-secondary)]">Upward to Sanctuary via sustained compliance. Downward via breach or voluntary choice. All movement is permanent for punitive descent.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- -1 -->
+        <div class="bg-[var(--bg-secondary)] rounded-3xl border border-[var(--border)] overflow-hidden">
+          <div class="p-8 border-b border-[var(--border)]">
+            <div class="flex items-start justify-between gap-4 mb-4">
+              <div>
+                <div class="text-xs uppercase tracking-widest text-[var(--text-muted)] mb-1">Civic Violation Tier · Post-Intervention</div>
+                <h2 class="text-3xl font-black text-[var(--accent)]">-1 Noncompliance</h2>
+                <p class="text-[var(--text-muted)] text-sm mt-1">Informal name: The Balanced Layer</p>
+              </div>
+              <div class="text-right shrink-0">
+                <div class="text-xs text-[var(--text-muted)]">STI threshold</div>
+                <div class="text-lg font-bold text-[var(--accent)]">50–69</div>
+              </div>
+            </div>
+            <p class="text-[var(--text-secondary)] leading-relaxed">The first layer of consequence — for chronic low-harm violations, fraud, harassment, and repeated antisocial conduct that falls short of predatory harm. Life remains materially stable. What changes is the texture: reduced UBI, thinner institutional coverage, and a contracted social trust environment. The rehabilitation pathway is open. The layer is a consequence state, not a failure state.</p>
+          </div>
+          <div class="grid md:grid-cols-3 gap-0 divide-y md:divide-y-0 md:divide-x divide-[var(--border)]">
+            <div class="p-6">
+              <div class="text-xs uppercase tracking-widest text-[var(--text-muted)] mb-2">Economy</div>
+              <p class="text-sm text-[var(--text-secondary)]">$5,000/month UBI + Primary Job Subsidy. Hybrid public/private. Own siloed currency. 45–50% tax on income >$10M.</p>
+            </div>
+            <div class="p-6">
+              <div class="text-xs uppercase tracking-widest text-[var(--text-muted)] mb-2">Enforcement</div>
+              <p class="text-sm text-[var(--text-secondary)]">Post-intervention. Logging only, no preemptive protection. Revival serviced via VMSS satellite installation.</p>
+            </div>
+            <div class="p-6">
+              <div class="text-xs uppercase tracking-widest text-[var(--text-muted)] mb-2">Pathway</div>
+              <p class="text-sm text-[var(--text-secondary)]">Rehabilitation pathway open via sustained STI improvement. No fixed timeline. Conduct is the only mechanism.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- -2 -->
+        <div class="bg-[var(--bg-secondary)] rounded-3xl border border-[var(--border)] overflow-hidden">
+          <div class="p-8 border-b border-[var(--border)]">
+            <div class="flex items-start justify-between gap-4 mb-4">
+              <div>
+                <div class="text-xs uppercase tracking-widest text-[var(--text-muted)] mb-1">Severe Harm Tier · Post-Intervention</div>
+                <h2 class="text-3xl font-black text-[var(--accent)]">-2 Violent Offense</h2>
+                <p class="text-[var(--text-muted)] text-sm mt-1">Informal name: The Lower Restrictions Layer</p>
+              </div>
+              <div class="text-right shrink-0">
+                <div class="text-xs text-[var(--text-muted)]">STI threshold</div>
+                <div class="text-lg font-bold text-[var(--accent)]">30–49</div>
+              </div>
+            </div>
+            <p class="text-[var(--text-secondary)] leading-relaxed">For citizens who have committed serious predatory harm — rape, severe assault, systematic coercive violence. The institutional safety net has substantially withdrawn. Private enterprise fills the void. Victims are still restored where infrastructure remains. Punitive reassignment here is permanent. Life, commerce, and genuine social order continue on the layer's own terms.</p>
+          </div>
+          <div class="grid md:grid-cols-3 gap-0 divide-y md:divide-y-0 md:divide-x divide-[var(--border)]">
+            <div class="p-6">
+              <div class="text-xs uppercase tracking-widest text-[var(--text-muted)] mb-2">Economy</div>
+              <p class="text-sm text-[var(--text-secondary)]">$2,500/month UBI + Primary Job Subsidy. Predominantly private. Own siloed currency. 20–25% tax on income >$10M.</p>
+            </div>
+            <div class="p-6">
+              <div class="text-xs uppercase tracking-widest text-[var(--text-muted)] mb-2">Enforcement</div>
+              <p class="text-sm text-[var(--text-secondary)]">Post-intervention, logging only. Murder triggers immediate -3 reassignment. Revival via VMSS satellite installation.</p>
+            </div>
+            <div class="p-6">
+              <div class="text-xs uppercase tracking-widest text-[var(--text-muted)] mb-2">Social order</div>
+              <p class="text-sm text-[var(--text-secondary)]">Private security, territorial hierarchy, organic community. Public ledger follows every resident — the voluntary population builds a premium environment distinct from the punitive.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- -3 -->
+        <div class="bg-[var(--bg-secondary)] rounded-3xl border border-[var(--border)] overflow-hidden">
+          <div class="p-8 border-b border-[var(--border)]">
+            <div class="flex items-start justify-between gap-4 mb-4">
+              <div>
+                <div class="text-xs uppercase tracking-widest text-[var(--text-muted)] mb-1">Capital Offense Layer · Zero Intervention</div>
+                <h2 class="text-3xl font-black text-[var(--accent)]">-3 Terminal</h2>
+                <p class="text-[var(--text-muted)] text-sm mt-1">Informal name: The Freedom Layer</p>
+              </div>
+              <div class="text-right shrink-0">
+                <div class="text-xs text-[var(--text-muted)]">STI threshold</div>
+                <div class="text-lg font-bold text-[var(--accent)]">0–29</div>
+              </div>
+            </div>
+            <p class="text-[var(--text-secondary)] leading-relaxed">The final ring. No AI monitoring, no enforcement infrastructure, no revival. Death is final — the implant severs the backup vessel link programmatically at terminal reassignment, enforced at the hardware level. A meaningful portion of -3 residents chose to be there — voluntary libertarian residents who prefer maximum freedom over institutional protection. The layer stratifies organically. What VMSS doesn't design, human social physics produces on its own.</p>
+          </div>
+          <div class="grid md:grid-cols-3 gap-0 divide-y md:divide-y-0 md:divide-x divide-[var(--border)]">
+            <div class="p-6">
+              <div class="text-xs uppercase tracking-widest text-[var(--text-muted)] mb-2">Economy</div>
+              <p class="text-sm text-[var(--text-secondary)]">$1,250/month UBI. Earth-like capitalism — equity markets, speculation, private banking. 10–15% tax on income >$10M. Own siloed currency.</p>
+            </div>
+            <div class="p-6">
+              <div class="text-xs uppercase tracking-widest text-[var(--text-muted)] mb-2">Enforcement</div>
+              <p class="text-sm text-[var(--text-secondary)]">None from VMSS. Private institutions fill the void. The public ledger travels with every resident — private communities use it to make their own decisions.</p>
+            </div>
+            <div class="p-6">
+              <div class="text-xs uppercase tracking-widest text-[var(--text-muted)] mb-2">Continuity</div>
+              <p class="text-sm text-[var(--text-secondary)]">Severed at arrival. No VMSS fabrication satellite present. Death is final without exception. Bailout options unavailable.</p>
+            </div>
+          </div>
+        </div>
+
+      </div><!-- end layer cards -->
+
+      <div class="mt-12 text-center text-sm text-[var(--text-muted)]">
+        Continue to <a href="systems.html" class="text-[var(--accent)] hover:text-[var(--accent-soft)] transition">Systems</a> to see how governance, economy, and enforcement make the ring structure operational.
+      </div>
+
+    </div>
+  </section>
+</main>
+
+<div id="footer-placeholder"></div>
+<script src="script.js"></script>
+</body>
+</html>

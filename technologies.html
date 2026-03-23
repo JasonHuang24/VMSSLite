@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Technologies • The Five Rings</title>
+  <meta name="description" content="The technological foundation that makes moral causality possible — implants, backup vessels, enforcement, and more." />
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    const saved = localStorage.getItem('theme') ||
+                  (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+    document.documentElement.setAttribute('data-theme', saved);
+  </script>
+</head>
+<body class="bg-[var(--bg-primary)] text-[var(--text-primary)] flex flex-col min-h-screen">
+<div id="navbar-placeholder"></div>
+
+<main class="flex-1">
+  <section class="pt-32 pb-24 px-6">
+    <div class="max-w-4xl mx-auto">
+
+      <div class="mb-14">
+        <h1 class="text-5xl font-black tracking-tight mb-4">Core Technologies</h1>
+        <p class="text-[var(--text-secondary)] text-lg max-w-2xl">The technological foundation that makes moral causality operational rather than rhetorical.</p>
+      </div>
+
+      <div class="space-y-6">
+
+        <div class="bg-[var(--bg-secondary)] rounded-3xl border border-[var(--border)] p-8">
+          <h2 class="text-2xl font-bold text-[var(--accent)] mb-4">Technoneural Implants</h2>
+          <p class="text-[var(--text-secondary)] leading-relaxed mb-4">The central nervous system of VMSS. Voluntary brain-computer interfaces implanted at entry. Serve as identity anchor, intent monitor, failsafe device, personal AR dashboard, and backup vessel sync point. Thoughts remain completely private — only outward expression and executed acts affect STI or enforcement thresholds.</p>
+          <div class="grid md:grid-cols-2 gap-4 text-sm text-[var(--text-secondary)]">
+            <ul class="space-y-2 list-disc pl-5">
+              <li>Neural pattern scanning — distinguishes intent from thought</li>
+              <li>Real-time intent and execution detection with warnings</li>
+              <li>User-configurable failsafe motor inhibition</li>
+            </ul>
+            <ul class="space-y-2 list-disc pl-5">
+              <li>AR overlays and personal dashboards</li>
+              <li>STI ledger integration — two-track: social trust and criminal record</li>
+              <li>Backup vessel sync and continuity anchoring</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="bg-[var(--bg-secondary)] rounded-3xl border border-[var(--border)] p-8">
+          <h2 class="text-2xl font-bold text-[var(--accent)] mb-4">Backup Vessels</h2>
+          <p class="text-[var(--text-secondary)] leading-relaxed mb-4">Periodic encrypted mind-state backups stored in secure vaults. Upon death, the latest backup transfers to a pre-grown vessel. Preserves continuity of identity — not moral status. Drift risk is 0.5–2% depending on layer, declining toward zero as the technology matures.</p>
+          <p class="text-[var(--text-secondary)] leading-relaxed mb-4">Fabrication is sovereign VMSS technology manufactured exclusively in Main Layer and Sanctuary. In -1 and -2, continuity is serviced through VMSS-operated fabrication satellite installations — closed, sovereign facilities inaccessible to the local economy. In -3, the implant severs the backup vessel link programmatically at terminal reassignment. Death in -3 is final, enforced at the hardware level.</p>
+          <div class="text-sm text-[var(--text-muted)] italic">"Backup vessels preserve continuity, not innocence."</div>
+        </div>
+
+        <div class="bg-[var(--bg-secondary)] rounded-3xl border border-[var(--border)] p-8">
+          <h2 class="text-2xl font-bold text-[var(--accent)] mb-4">Neural Diving</h2>
+          <p class="text-[var(--text-secondary)] leading-relaxed">Direct consensual mind-to-mind interface. Audience Mode allows passive observation of another person's subjective experience. Pilot Mode allows temporary active inhabitation with fully revocable consent. Used for education, therapy, empathy training, creative collaboration, and augmentation previews. All sessions logged for safety. Non-consensual content triggers immediate reassignment.</p>
+        </div>
+
+        <div class="bg-[var(--bg-secondary)] rounded-3xl border border-[var(--border)] p-8">
+          <h2 class="text-2xl font-bold text-[var(--accent)] mb-4">Enforcement Systems</h2>
+          <p class="text-[var(--text-secondary)] leading-relaxed mb-4">Medical drones, enforcement turrets, and automated response swarms operate continuously in Main Layer and above. In Heaven Layers, the Threshold Inhibition Protocol halts harmful acts before completion. In Main and below, the system captures irrefutable evidence and reassigns perpetrators immediately after acts complete.</p>
+          <p class="text-[var(--text-secondary)] leading-relaxed">AR surveillance — drone patrols, security cameras, citizen implants, and government-grade biometric cameras — makes identity non-repudiable regardless of implant status. Removing an implant does not erase your record.</p>
+        </div>
+
+        <div class="bg-[var(--bg-secondary)] rounded-3xl border border-[var(--border)] p-8">
+          <h2 class="text-2xl font-bold text-[var(--accent)] mb-4">Biological Augmentation</h2>
+          <p class="text-[var(--text-secondary)] leading-relaxed">Consensual, reversible modifications using nanotech, gene editing, and organoid fabrication. Practical lifespan of 200–300 years, theoretical upper limit approaching 1,000. Fertility window extends to 500 years. Age pinning, transrace, transanimal traits, and custom modifications available. Subsidised in higher layers. Previews available via neural diving.</p>
+        </div>
+
+        <div class="bg-[var(--bg-secondary)] rounded-3xl border border-[var(--border)] p-8">
+          <h2 class="text-2xl font-bold text-[var(--accent)] mb-4">Mega-Walls & Boundary Infrastructure</h2>
+          <p class="text-[var(--text-secondary)] leading-relaxed mb-4">Continuous boundary walls separating the five rings: 15km above ground, 5km below ground, 100m thick. The above-ground height clears commercial aviation altitude entirely. The sub-surface depth closes tunnelling approaches. Seismic sensors, ground-penetrating radar, persistent drone swarms, and automated turrets are integrated throughout.</p>
+          <p class="text-[var(--text-secondary)] leading-relaxed">Forcefield integration is planned for the 28th century as Dyson-class energy infrastructure matures — adding an energy barrier layer on top of the physical structure. By 2850, the boundary is impenetrable by any means available to individuals or organised groups.</p>
+        </div>
+
+        <div class="bg-[var(--bg-secondary)] rounded-3xl border border-[var(--border)] p-8">
+          <h2 class="text-2xl font-bold text-[var(--accent)] mb-4">Automated Labor & UBI Foundation</h2>
+          <p class="text-[var(--text-secondary)] leading-relaxed">AI-driven automation generates the surplus that funds Universal Basic Income across all layers. In Heaven and Main, AI handles 90%+ of production. In lower layers, automation infrastructure is thinner — creating genuine demand for human labour and a rawer market economy where capability commands direct value. The Primary Job Subsidy steers labour toward critical infrastructure roles without coercion.</p>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+</main>
+
+<div id="footer-placeholder"></div>
+<script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,1710 @@
+/* VMSS Global Styles — Version 9.10.1 */
+
+/* =========================
+   DESIGN TOKENS
+   Dark mode (default) and light mode overrides.
+   --accent / --accent-soft: gold palette used for highlights, CTAs, active states
+   --border / --border-strong: subtle borders; strong variant used for accent-adjacent elements
+   --shadow-accent: gold-tinted shadow for elements near the accent colour
+   ========================= */
+:root {
+  --bg-primary: #07090f;
+  --bg-secondary: #101522;
+  --bg-tertiary: #151c2d;
+  --bg-elevated: rgba(16, 21, 34, 0.84);
+  --text-primary: #f7f8fb;
+  --text-secondary: #c6cfdd;
+  --text-muted: #8792a6;
+  --accent: #f3c15f;
+  --accent-soft: #f7d68c;
+  --accent-glow: rgba(243, 193, 95, 0.18);
+  --border: rgba(144, 158, 182, 0.18);
+  --border-strong: rgba(243, 193, 95, 0.22);
+  --shadow: rgba(0, 0, 0, 0.42);
+  --shadow-accent: rgba(243, 193, 95, 0.2);
+}
+
+[data-theme="light"] {
+  --bg-primary: #f5f7fb;
+  --bg-secondary: #ffffff;
+  --bg-tertiary: #edf2f8;
+  --bg-elevated: rgba(255, 255, 255, 0.88);
+  --text-primary: #0e1728;
+  --text-secondary: #344156;
+  --text-muted: #607089;
+  --accent: #b7791f;
+  --accent-soft: #8a5b12;
+  --accent-glow: rgba(183, 121, 31, 0.11);
+  --border: rgba(99, 115, 141, 0.18);
+  --border-strong: rgba(183, 121, 31, 0.25);
+  --shadow: rgba(25, 39, 67, 0.08);
+  --shadow-accent: rgba(183, 121, 31, 0.14);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+/* Layered radial + linear gradient gives the page a subtle warm glow
+   at the top without a harsh edge. Transitions smoothly on theme change. */
+body {
+  background:
+    radial-gradient(circle at top, var(--accent-glow), transparent 34%),
+    linear-gradient(180deg, rgba(255,255,255,0.015), transparent 22%),
+    var(--bg-primary);
+  color: var(--text-primary);
+  transition: background-color 0.35s ease, color 0.35s ease;
+}
+
+.vmss-page-shell {
+  position: relative;
+}
+
+/* Ambient glow orbs — fixed pseudo-elements that sit behind all page content.
+   Left orb: warm gold accent. Right orb: cool blue counterbalance.
+   Disabled on mobile (v7.3) to avoid paint cost on low-power devices. */
+.vmss-page-shell::before,
+.vmss-page-shell::after {
+  content: "";
+  position: fixed;
+  inset: auto;
+  pointer-events: none;
+  z-index: 0;
+  filter: blur(80px);
+  opacity: 0.45;
+  will-change: opacity;
+  transform: translateZ(0);
+}
+
+.vmss-page-shell::before {
+  top: 8rem;
+  left: -4rem;
+  width: 14rem;
+  height: 14rem;
+  background: var(--accent-glow);
+}
+
+.vmss-page-shell::after {
+  right: -5rem;
+  bottom: 8rem;
+  width: 18rem;
+  height: 18rem;
+  background: rgba(89, 131, 255, 0.08);
+}
+
+main, section, footer, nav, #navbar-placeholder, #footer-placeholder {
+  position: relative;
+  z-index: 1;
+}
+
+/* Layout order guards — ensures navbar → main → footer stacking regardless
+   of DOM insertion order. The navbar and footer are fetched asynchronously
+   and injected into placeholders, so explicit flex order prevents any flash
+   of incorrect stacking during the fetch. */
+body {
+  display: flex;
+  flex-direction: column;
+}
+
+#navbar-placeholder {
+  order: 0;
+  width: 100%;
+}
+
+main {
+  order: 1;
+  width: 100%;
+}
+
+#footer-placeholder {
+  order: 2;
+  width: 100%;
+}
+
+.vmss-nav {
+  position: relative;
+  top: 0;
+  left: 0;
+}
+
+.hero-bg {
+  background:
+    radial-gradient(circle at 20% 15%, var(--accent-glow), transparent 28%),
+    radial-gradient(circle at 80% 10%, rgba(75, 130, 255, 0.08), transparent 26%),
+    linear-gradient(180deg, rgba(255,255,255,0.03), transparent 40%),
+    var(--bg-primary);
+}
+
+.vmss-nav {
+  background: color-mix(in srgb, var(--bg-primary) 92%, transparent);
+  border-bottom: 1px solid var(--border);
+  box-shadow: 0 20px 40px -28px var(--shadow);
+}
+
+.vmss-nav-mark {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.75rem;
+  height: 2.75rem;
+  border-radius: 1rem;
+  border: 1px solid var(--border-strong);
+  background: linear-gradient(180deg, var(--accent-glow), transparent), var(--bg-tertiary);
+  color: var(--accent);
+  font-size: 1.4rem;
+  box-shadow: 0 12px 28px -18px var(--shadow-accent);
+}
+
+.vmss-icon-button {
+  width: 2.8rem;
+  height: 2.8rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  background: var(--bg-elevated);
+  color: var(--text-primary);
+  transition: transform 0.22s ease, border-color 0.22s ease, background-color 0.22s ease, color 0.22s ease;
+}
+
+.vmss-icon-button:hover {
+  transform: translateY(-1px);
+  border-color: var(--border-strong);
+  color: var(--accent);
+}
+
+.vmss-mobile-menu {
+  background: color-mix(in srgb, var(--bg-secondary) 92%, transparent);
+  border-color: var(--border);
+}
+
+.nav-link {
+  color: var(--text-secondary);
+  position: relative;
+}
+
+.nav-link:hover {
+  color: var(--accent) !important;
+}
+
+.nav-link-active {
+  color: var(--accent) !important;
+  font-weight: 700;
+}
+
+.nav-link-join {
+  padding: 0.7rem 1rem;
+  border-radius: 999px;
+  border: 1px solid var(--border-strong);
+  background: linear-gradient(180deg, var(--accent-glow), transparent);
+}
+
+.vmss-home-section {
+  position: relative;
+}
+
+.vmss-home-section-muted {
+  background: linear-gradient(180deg, rgba(255,255,255,0.02), transparent), rgba(255,255,255,0.015);
+}
+
+.vmss-hero-surface,
+.vmss-panel,
+.vmss-panel-strong,
+.vmss-mini-panel,
+.vmss-stat-card,
+.layer-card,
+.sad-card,
+.page-hero-card,
+.vmss-enhanced-panel {
+  background: linear-gradient(180deg, rgba(255,255,255,0.03), transparent 42%), var(--bg-elevated);
+  border: 1px solid var(--border);
+  border-radius: 1.6rem;
+  box-shadow: 0 30px 60px -44px var(--shadow), inset 0 1px 0 rgba(255,255,255,0.06);
+  backdrop-filter: blur(10px);
+}
+
+.vmss-hero-surface {
+  padding: 1.5rem;
+}
+
+.vmss-panel,
+.vmss-enhanced-panel {
+  padding: 2rem;
+}
+
+.vmss-mini-panel {
+  padding: 1rem 1.1rem;
+}
+
+.vmss-mini-title {
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  color: var(--accent);
+}
+
+.vmss-mini-copy {
+  margin-top: 0.65rem;
+  color: var(--text-secondary);
+  line-height: 1.7;
+  font-size: 0.96rem;
+}
+
+.vmss-status-pill {
+  border-radius: 999px;
+  padding: 0.45rem 0.8rem;
+  font-size: 0.7rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  border: 1px solid rgba(94, 205, 159, 0.25);
+  background: rgba(94, 205, 159, 0.1);
+  color: #87e2b5;
+}
+
+.vmss-cta-primary,
+.vmss-cta-secondary,
+button#open-entry-modal,
+button[type="submit"] {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 3.4rem;
+  padding: 0.95rem 1.45rem;
+  border-radius: 1rem;
+  font-weight: 700;
+  transition: transform 0.22s ease, box-shadow 0.22s ease, border-color 0.22s ease, background-color 0.22s ease, color 0.22s ease;
+}
+
+.vmss-cta-primary,
+button#open-entry-modal,
+button[type="submit"] {
+  color: #1d1402 !important;
+  background: linear-gradient(180deg, color-mix(in srgb, var(--accent) 86%, white), var(--accent));
+  box-shadow: 0 22px 38px -22px var(--shadow-accent);
+}
+
+.vmss-cta-primary:hover,
+button#open-entry-modal:hover,
+button[type="submit"]:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 28px 40px -22px var(--shadow-accent);
+}
+
+.vmss-cta-secondary {
+  border: 1px solid var(--border);
+  background: rgba(255,255,255,0.03);
+  color: var(--text-primary) !important;
+}
+
+.vmss-cta-secondary:hover {
+  border-color: var(--border-strong);
+  color: var(--accent) !important;
+  background: color-mix(in srgb, var(--accent) 8%, transparent);
+  transform: translateY(-1px);
+}
+
+.vmss-stat-card {
+  padding: 1rem;
+}
+
+.vmss-stat-value {
+  font-size: 1.25rem;
+  font-weight: 800;
+  color: var(--accent);
+}
+
+.vmss-stat-label {
+  margin-top: 0.35rem;
+  font-size: 0.7rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+.vmss-eyebrow {
+  font-size: 0.74rem;
+  text-transform: uppercase;
+  letter-spacing: 0.32em;
+  color: var(--text-muted);
+}
+
+.vmss-section-heading-row {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-bottom: 2.25rem;
+}
+
+.vmss-section-title {
+  font-size: clamp(2rem, 3vw, 3rem);
+  line-height: 1.05;
+  font-weight: 700;
+  letter-spacing: -0.04em;
+}
+
+.vmss-section-copy {
+  color: var(--text-secondary);
+  line-height: 1.8;
+}
+
+.vmss-layer-stack {
+  padding: 1.15rem;
+  border-radius: 2rem;
+  border: 1px solid var(--border);
+  background: linear-gradient(180deg, rgba(255,255,255,0.04), transparent), var(--bg-elevated);
+  box-shadow: 0 32px 50px -38px var(--shadow);
+}
+
+.vmss-layer-band {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem 1.15rem;
+  border-radius: 1.2rem;
+  border: 1px solid var(--border);
+  transition: transform 0.2s ease, border-color 0.2s ease, background-color 0.2s ease;
+}
+
+.vmss-layer-band + .vmss-layer-band {
+  margin-top: 0.75rem;
+}
+
+.vmss-layer-band:hover {
+  transform: translateY(-1px);
+  border-color: var(--border-strong);
+}
+
+.vmss-layer-band-plus { background: rgba(243, 193, 95, 0.12); }
+.vmss-layer-band-zero { background: rgba(255, 255, 255, 0.04); }
+.vmss-layer-band-negative { background: rgba(237, 136, 59, 0.11); }
+.vmss-layer-band-negative-deep { background: rgba(210, 94, 94, 0.11); }
+.vmss-layer-band-terminal { background: rgba(167, 58, 58, 0.12); }
+
+.vmss-layer-level {
+  min-width: 3.2rem;
+  min-height: 3.2rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 1rem;
+  border: 1px solid rgba(255,255,255,0.08);
+  background: rgba(0,0,0,0.18);
+  font-size: 1.1rem;
+  font-weight: 800;
+  color: var(--accent-soft);
+}
+
+.vmss-layer-name {
+  display: block;
+  font-weight: 700;
+  font-size: 1.05rem;
+}
+
+.vmss-layer-desc {
+  display: block;
+  margin-top: 0.2rem;
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+}
+
+.vmss-main-section {
+  padding-top: 8.75rem !important;
+  padding-bottom: 6rem !important;
+}
+
+.vmss-content-frame {
+  position: relative;
+}
+
+.vmss-title {
+  font-size: clamp(2.8rem, 5vw, 4.8rem) !important;
+  line-height: 0.98 !important;
+  letter-spacing: -0.055em;
+  color: var(--text-primary) !important;
+}
+
+.vmss-subtitle {
+  margin-top: 1rem !important;
+  color: var(--text-secondary) !important;
+  line-height: 1.8 !important;
+}
+
+.vmss-page-intro {
+  padding: 2rem;
+  margin-bottom: 2rem;
+  border-radius: 1.75rem;
+  border: 1px solid var(--border);
+  background: linear-gradient(180deg, rgba(255,255,255,0.03), transparent), var(--bg-elevated);
+  box-shadow: 0 26px 50px -40px var(--shadow);
+}
+
+.layer-card, .sad-card {
+  transition: transform 0.28s cubic-bezier(0.22, 1, 0.36, 1), border-color 0.22s ease, box-shadow 0.28s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.layer-card:hover, .sad-card:hover {
+  transform: translateY(-6px);
+  border-color: var(--border-strong);
+  box-shadow: 0 30px 45px -30px var(--shadow-accent);
+}
+
+.vmss-enhanced-card {
+  transition: transform 0.28s cubic-bezier(0.22, 1, 0.36, 1), border-color 0.22s ease, box-shadow 0.28s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.vmss-enhanced-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--border-strong);
+  box-shadow: 0 26px 42px -32px var(--shadow-accent);
+}
+
+.vmss-prose,
+.prose {
+  color: var(--text-secondary) !important;
+  max-width: none !important;
+  line-height: 1.85 !important;
+}
+
+.vmss-prose h2,
+.prose h2 {
+  font-size: clamp(1.7rem, 2.4vw, 2.5rem) !important;
+  line-height: 1.1 !important;
+  letter-spacing: -0.035em;
+  color: var(--text-primary) !important;
+  margin-top: 3.5rem !important;
+  margin-bottom: 1.25rem !important;
+  padding-top: 1.25rem;
+  border-top: 1px solid var(--border);
+}
+
+.vmss-prose h3,
+.prose h3 {
+  font-size: clamp(1.3rem, 2vw, 1.75rem) !important;
+  color: var(--accent) !important;
+  margin-top: 2rem !important;
+  margin-bottom: 0.9rem !important;
+}
+
+.vmss-prose p,
+.prose p,
+.vmss-prose li,
+.prose li {
+  color: var(--text-secondary) !important;
+}
+
+.vmss-prose strong,
+.prose strong {
+  color: var(--text-primary) !important;
+  font-weight: 600;
+}
+
+.vmss-prose ul,
+.vmss-prose ol,
+.prose ul,
+.prose ol {
+  padding-left: 1.45rem;
+}
+
+.vmss-prose li + li,
+.prose li + li {
+  margin-top: 0.5rem;
+}
+
+.vmss-footer {
+  border-top: 1px solid var(--border);
+  background: linear-gradient(180deg, rgba(255,255,255,0.03), transparent), color-mix(in srgb, var(--bg-secondary) 88%, transparent);
+}
+
+/* Simulation & FAQ accordion cards */
+.simulation-card,
+.faq-card {
+  transition: border-color 0.22s ease, box-shadow 0.22s ease;
+}
+
+.simulation-card:hover,
+.faq-card:hover {
+  border-color: var(--border-strong);
+  box-shadow: 0 8px 32px -16px var(--shadow);
+}
+
+.simulation-content,
+.faq-content {
+  border-top: 1px solid var(--border);
+}
+
+.simulation-content p + p,
+.faq-content p + p {
+  margin-top: 1rem;
+}
+
+.back-arrow {
+  z-index: 60;
+  transition: opacity 0.3s ease, transform 0.2s ease, color 0.2s ease;
+  width: 3.1rem;
+  height: 3.1rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  background: var(--bg-elevated);
+  color: var(--accent) !important;
+  box-shadow: 0 18px 28px -20px var(--shadow);
+}
+
+.back-arrow:hover {
+  transform: translateY(-1px) scale(1.04);
+}
+
+.back-arrow.scrolled-hidden {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.emblem-logo {
+  animation: fadeIn 1.2s ease-out, subtlePulse 8s infinite ease-in-out;
+}
+
+#mobile-menu {
+  transition: all 0.3s ease-in-out;
+  transform-origin: top;
+}
+
+#mobile-menu:not(.hidden) {
+  animation: slideDown 0.28s ease-out forwards;
+}
+
+/* Scroll-reveal animation — elements start invisible/offset and transition
+   in when the IntersectionObserver fires (see initReveal in script.js).
+   will-change is set in the v7.3 performance pass to hint compositing. */
+.reveal-item {
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity 0.55s ease, transform 0.55s ease;
+}
+
+.reveal-item.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+input, textarea, select {
+  transition: border-color 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
+}
+
+input:focus, textarea:focus, select:focus {
+  box-shadow: 0 0 0 4px color-mix(in srgb, var(--accent) 20%, transparent);
+}
+
+a {
+  color: inherit;
+}
+
+a:hover {
+  color: var(--accent);
+}
+
+[data-theme="light"] .text-zinc-100,
+[data-theme="light"] .text-zinc-200,
+[data-theme="light"] .text-zinc-300,
+[data-theme="light"] .text-zinc-400,
+[data-theme="light"] .text-zinc-500 {
+  color: var(--text-primary) !important;
+}
+
+[data-theme="light"] .text-yellow-400,
+[data-theme="light"] .text-amber-400,
+[data-theme="light"] .text-red-400,
+[data-theme="light"] .text-red-500 {
+  color: var(--accent) !important;
+}
+
+[data-theme="light"] .bg-zinc-950,
+[data-theme="light"] .bg-zinc-900,
+[data-theme="light"] .bg-zinc-800 {
+  background-color: var(--bg-secondary) !important;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: scale(0.92); }
+  to { opacity: 0.95; transform: scale(1); }
+}
+
+@keyframes subtlePulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.03); }
+}
+
+@keyframes slideDown {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@media (min-width: 900px) {
+  .vmss-section-heading-row {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: end;
+  }
+}
+
+@media (max-width: 768px) {
+  .vmss-main-section {
+    padding-top: 7.5rem !important;
+    padding-bottom: 5rem !important;
+  }
+
+  .vmss-panel,
+  .vmss-enhanced-panel,
+  .vmss-hero-surface,
+  .layer-card,
+  .sad-card {
+    padding: 1.4rem !important;
+  }
+
+  .vmss-page-intro {
+    padding: 1.35rem;
+  }
+
+  .back-arrow {
+    left: 1rem !important;
+    top: 5.8rem !important;
+  }
+}
+
+
+.layer-card h2 {
+  line-height: 1.1;
+  overflow-wrap: anywhere;
+}
+
+/* VMSS Layer Stack Enhancements */
+
+.layer-card.level-positive {
+  border-color: rgba(251,191,36,0.35);
+  background: linear-gradient(
+    to bottom,
+    rgba(251,191,36,0.12),
+    rgba(251,191,36,0.03)
+  );
+}
+
+.layer-card.level-neutral {
+  border-color: rgba(255,255,255,0.12);
+}
+
+.layer-card.level-negative {
+  border-color: rgba(255,255,255,0.08);
+  opacity: 0.92;
+}
+
+/* VMSS Ring Diagram */
+
+.vmss-ring-diagram {
+width: 100%;
+max-width: 600px;
+margin: auto;
+}
+
+.ring {
+fill: none;
+stroke-width: 4;
+opacity: 0.9;
+}
+
+/* ring colors */
+
+.ring-sanctuary {
+stroke: var(--accent);
+stroke-width: 6;
+}
+
+.ring-main {
+stroke: rgba(255,255,255,0.6);
+}
+
+.ring-noncompliance {
+stroke: rgba(255,165,0,0.6);
+}
+
+.ring-predatory {
+stroke: rgba(255,90,90,0.7);
+}
+
+.ring-terminal {
+stroke: rgba(150,0,0,0.8);
+}
+
+.ring-label {
+font-size: 16px;
+letter-spacing: 2px;
+fill: var(--text-secondary);
+font-weight: 600;
+text-anchor: middle;
+}
+
+.ring-center-label {
+font-size: 18px;
+font-weight: 700;
+fill: var(--text-primary);
+}
+
+/* Megastructure ring styling */
+
+.ring {
+  fill: none;
+  stroke-width: 4;
+  opacity: 0.95;
+  stroke-linecap: round;
+}
+
+/* segmented structure */
+
+.ring-main,
+.ring-noncompliance,
+.ring-predatory,
+.ring-terminal {
+  stroke-dasharray: 10 6;
+}
+
+/* subtle glow */
+
+.ring-sanctuary {
+  stroke: var(--accent);
+  stroke-width: 6;
+  filter: drop-shadow(0 0 6px rgba(255,200,80,0.35));
+}
+
+.ring-main {
+  stroke: rgba(220,220,220,0.8);
+}
+
+.ring-noncompliance {
+  stroke: rgba(255,180,60,0.8);
+}
+
+.ring-predatory {
+  stroke: rgba(255,120,120,0.8);
+}
+
+.ring-terminal {
+  stroke: rgba(200,40,40,0.9);
+}
+
+.vmss-ring-diagram circle {
+  transform-origin: 300px 300px;
+  animation: ringRotate 120s linear infinite;
+}
+
+@keyframes ringRotate {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+/* VMSS Justice Flow */
+
+.vmss-flow-shell {
+  border: 1px solid var(--border);
+  border-radius: 2rem;
+  background: linear-gradient(180deg, rgba(255,255,255,0.03), transparent), var(--bg-elevated);
+  box-shadow: 0 30px 60px -44px var(--shadow);
+  padding: 2rem;
+}
+
+.vmss-flow-top {
+  display: grid;
+  gap: 1rem;
+  max-width: 820px;
+  margin: 0 auto;
+}
+
+.vmss-flow-node {
+  border: 1px solid var(--border);
+  border-radius: 1.4rem;
+  background: rgba(255,255,255,0.03);
+  padding: 1.4rem 1.5rem;
+  text-align: center;
+}
+
+.vmss-flow-node-accent {
+  border-color: var(--border-strong);
+  background: linear-gradient(180deg, var(--accent-glow), transparent), rgba(255,255,255,0.03);
+}
+
+.vmss-flow-kicker {
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.24em;
+  color: var(--text-muted);
+  margin-bottom: 0.7rem;
+}
+
+.vmss-flow-node h3,
+.vmss-flow-box h4,
+.vmss-flow-branch-head h3 {
+  color: var(--text-primary);
+}
+
+.vmss-flow-node p,
+.vmss-flow-box p,
+.vmss-flow-branch-head p {
+  color: var(--text-secondary);
+  line-height: 1.75;
+  margin-top: 0.6rem;
+}
+
+.vmss-flow-arrow {
+  text-align: center;
+  color: var(--accent);
+  font-size: 1.8rem;
+  line-height: 1;
+}
+
+.vmss-flow-branch-divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  margin: 2.2rem 0 1.8rem;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.24em;
+  font-size: 0.76rem;
+}
+
+.vmss-flow-branch-divider::before,
+.vmss-flow-branch-divider::after {
+  content: "";
+  height: 1px;
+  flex: 1;
+  background: var(--border);
+}
+
+.vmss-flow-branches {
+  display: grid;
+  gap: 1.4rem;
+  grid-template-columns: 1fr 1fr;
+}
+
+.vmss-flow-branch {
+  border: 1px solid var(--border);
+  border-radius: 1.6rem;
+  padding: 1.4rem;
+}
+
+.vmss-flow-branch-social {
+  background: rgba(255,255,255,0.02);
+}
+
+.vmss-flow-branch-criminal {
+  background: linear-gradient(180deg, rgba(190,70,70,0.09), transparent), rgba(255,255,255,0.02);
+  border-color: rgba(210,94,94,0.25);
+}
+
+.vmss-flow-branch-head {
+  text-align: center;
+  margin-bottom: 1.2rem;
+}
+
+.vmss-flow-branch-label {
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.24em;
+  color: var(--text-muted);
+  margin-bottom: 0.6rem;
+}
+
+.vmss-flow-branch-grid {
+  display: grid;
+  gap: 1rem;
+}
+
+.vmss-flow-box {
+  border: 1px solid var(--border);
+  border-radius: 1.2rem;
+  background: rgba(255,255,255,0.03);
+  padding: 1rem 1.1rem;
+}
+
+.vmss-flow-box-warn {
+  border-color: rgba(210,94,94,0.22);
+  background: rgba(210,94,94,0.08);
+}
+
+@media (max-width: 900px) {
+  .vmss-flow-branches {
+    grid-template-columns: 1fr;
+  }
+
+  .vmss-flow-shell {
+    padding: 1.3rem;
+  }
+}
+
+/* VMSS Systems + SAD polish */
+.systems-hero-card,
+.sad-hero-card {
+  background: linear-gradient(180deg, rgba(255,255,255,0.04), transparent 40%), var(--bg-elevated);
+  border: 1px solid var(--border);
+  box-shadow: 0 34px 70px -50px var(--shadow), inset 0 1px 0 rgba(255,255,255,0.05);
+}
+
+.systems-jump-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.75rem;
+}
+
+.systems-jump-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 3rem;
+  border-radius: 1rem;
+  border: 1px solid var(--border);
+  background: rgba(255,255,255,0.03);
+  color: var(--text-secondary);
+  font-weight: 600;
+  transition: border-color 0.2s ease, transform 0.2s ease, color 0.2s ease, background-color 0.2s ease;
+}
+
+.systems-jump-link:hover {
+  color: var(--accent);
+  border-color: var(--border-strong);
+  transform: translateY(-1px);
+  background: rgba(255,255,255,0.045);
+}
+
+.systems-diagram-shell {
+  padding: 2rem;
+}
+
+.systems-diagram-head {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.systems-flow-grid {
+  display: grid;
+  gap: 1rem;
+  align-items: stretch;
+}
+
+.systems-flow-grid-4 {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.systems-flow-grid-5 {
+  grid-template-columns: repeat(9, minmax(0, 1fr));
+}
+
+.systems-flow-node {
+  border: 1px solid var(--border);
+  border-radius: 1.2rem;
+  background: rgba(255,255,255,0.03);
+  padding: 1.15rem;
+  text-align: center;
+}
+
+.systems-flow-node span {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.8rem;
+  height: 1.8rem;
+  border-radius: 999px;
+  border: 1px solid var(--border-strong);
+  color: var(--accent);
+  font-size: 0.8rem;
+  font-weight: 700;
+  margin-bottom: 0.7rem;
+}
+
+.systems-flow-node strong {
+  display: block;
+  color: var(--text-primary);
+  font-size: 1rem;
+}
+
+.systems-flow-node p {
+  margin-top: 0.55rem;
+  color: var(--text-secondary);
+  font-size: 0.92rem;
+  line-height: 1.7;
+}
+
+.systems-flow-node-accent {
+  border-color: var(--border-strong);
+  background: linear-gradient(180deg, var(--accent-glow), transparent), rgba(255,255,255,0.03);
+}
+
+.systems-flow-node-warn {
+  border-color: rgba(210,94,94,0.26);
+  background: rgba(210,94,94,0.08);
+}
+
+.systems-flow-arrow,
+.systems-flow-arrow-vertical {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--accent);
+  font-size: 1.8rem;
+}
+
+.systems-callout-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.systems-pill-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.systems-pill {
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+  border: 1px solid var(--border);
+  border-radius: 1rem;
+  background: rgba(255,255,255,0.03);
+  padding: 1rem 1.15rem;
+  color: var(--text-secondary);
+}
+
+.systems-pill i {
+  color: var(--accent);
+}
+
+.systems-column-shell {
+  border: 1px solid var(--border);
+  border-radius: 1.5rem;
+  background: rgba(255,255,255,0.02);
+  padding: 1.1rem;
+}
+
+.systems-column-shell-warn {
+  border-color: rgba(210,94,94,0.25);
+  background: linear-gradient(180deg, rgba(210,94,94,0.08), transparent), rgba(255,255,255,0.02);
+}
+
+.systems-column-label,
+.sad-card-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 1.9rem;
+  padding: 0.2rem 0.7rem;
+  border-radius: 999px;
+  background: rgba(255,255,255,0.05);
+  border: 1px solid var(--border);
+  color: var(--text-muted);
+  font-size: 0.72rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+}
+
+.systems-stack-flow {
+  display: grid;
+  gap: 0.8rem;
+}
+
+.sad-summary-panel {
+  position: relative;
+  overflow: hidden;
+}
+
+.sad-summary-panel::after,
+.systems-hero-card::after,
+.sad-hero-card::after {
+  content: "";
+  position: absolute;
+  width: 14rem;
+  height: 14rem;
+  right: -4rem;
+  top: -4rem;
+  background: var(--accent-glow);
+  filter: blur(45px);
+  pointer-events: none;
+}
+
+.sad-card {
+  position: relative;
+  overflow: hidden;
+}
+
+.sad-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(255,255,255,0.03), transparent 55%);
+  pointer-events: none;
+}
+
+.sad-card-featured {
+  border-color: var(--border-strong);
+  box-shadow: 0 26px 42px -32px var(--shadow-accent);
+}
+
+.sad-standards-shell {
+  padding: 1.5rem;
+}
+
+.sad-tier-grid {
+  display: grid;
+  gap: 0.85rem;
+}
+
+.sad-tier-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  align-items: center;
+  border: 1px solid var(--border);
+  border-radius: 1rem;
+  background: rgba(255,255,255,0.03);
+  padding: 1rem 1.1rem;
+}
+
+.sad-tier-row-elite {
+  border-color: var(--border-strong);
+  background: linear-gradient(180deg, var(--accent-glow), transparent), rgba(255,255,255,0.03);
+}
+
+.sad-tier-name {
+  color: var(--text-primary);
+  font-weight: 700;
+}
+
+.sad-tier-copy {
+  color: var(--text-muted);
+  font-size: 0.92rem;
+  margin-top: 0.25rem;
+}
+
+.sad-tier-values {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  min-width: 8rem;
+  text-align: right;
+}
+
+.sad-tier-values span {
+  color: var(--accent);
+  font-weight: 700;
+  font-size: 0.95rem;
+}
+
+.sad-tier-values-single {
+  min-width: 6rem;
+}
+
+@media (min-width: 900px) {
+  .systems-diagram-head {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: end;
+  }
+}
+
+@media (max-width: 1100px) {
+  .systems-flow-grid-5 {
+    grid-template-columns: 1fr;
+  }
+
+  .systems-flow-grid-5 .systems-flow-arrow {
+    transform: rotate(90deg);
+    min-height: 1.6rem;
+  }
+
+  .systems-flow-grid-4,
+  .systems-callout-grid,
+  .systems-pill-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .systems-jump-grid,
+  .systems-callout-grid,
+  .systems-pill-grid,
+  .systems-flow-grid-4 {
+    grid-template-columns: 1fr;
+  }
+
+  .sad-tier-row {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .sad-tier-values {
+    text-align: left;
+    min-width: 0;
+  }
+
+  .systems-diagram-shell,
+  .sad-standards-shell {
+    padding: 1.2rem;
+  }
+}
+
+
+/* =========================
+   PERFORMANCE + MOTION
+   Ambient glows disabled on mobile to reduce paint cost.
+   prefers-reduced-motion kills all animations and transitions site-wide —
+   the !important overrides ensure third-party classes don't slip through.
+   ========================= */
+@media (max-width: 768px) {
+  .vmss-page-shell::before,
+  .vmss-page-shell::after {
+    display: none;
+  }
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+.reveal-item {
+  will-change: opacity, transform;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal-item,
+  .emblem-logo,
+  .vmss-ring-diagram circle,
+  #mobile-menu,
+  body,
+  .vmss-hud,
+  .vmss-layer-card.is-linked-active,
+  .is-vmss-current,
+  .vmss-flash {
+    animation: none !important;
+    transition: none !important;
+    transform: none !important;
+  }
+
+  html {
+    scroll-behavior: auto !important;
+  }
+}
+
+
+/* =========================
+   INTERACTIVE DIAGRAMS + STI SIMULATION
+   Styles for layers.html (ring diagram, detail panel) and
+   simulations.html (STI console, gauge, slider grid, factor bars).
+   ========================= */
+.vmss-kicker {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  padding: 0.45rem 0.85rem;
+  border-radius: 999px;
+  border: 1px solid var(--border-strong);
+  background: linear-gradient(180deg, var(--accent-glow), transparent);
+  color: var(--accent);
+  font-size: 0.76rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+.vmss-diagram-shell { display:grid; grid-template-columns:minmax(0,1.1fr) minmax(320px,0.9fr); gap:1.5rem; align-items:stretch; }
+.vmss-diagram-stage,.vmss-sim-panel,.vmss-score-card,.vmss-breakdown-card,.vmss-profile-card {
+  background: linear-gradient(180deg, rgba(255,255,255,0.03), transparent 42%), var(--bg-elevated);
+  border: 1px solid var(--border);
+  border-radius: 1.8rem;
+  box-shadow: 0 30px 60px -44px var(--shadow), inset 0 1px 0 rgba(255,255,255,0.06);
+  backdrop-filter: blur(10px);
+  padding: 1.5rem;
+}
+.vmss-diagram-stage svg { width:100%; height:auto; overflow:visible; }
+/* The detail panel sits beside the ring diagram but should read as floating
+   content, not a card. All card chrome (border, background, shadow) is
+   suppressed here. padding retained for alignment. */
+.vmss-detail-panel { background:transparent; border:none; box-shadow:none; backdrop-filter:none; padding:1.5rem 0.5rem; }
+.vmss-ring-node { cursor:pointer; transition:opacity .22s ease, transform .22s ease; }
+.vmss-ring-node .ring-hit,.vmss-ring-node .ring-core,.vmss-ring-node .ring-label-chip,.layer-card {
+  transition: transform .22s ease, opacity .22s ease, stroke .22s ease, fill .22s ease, filter .22s ease, box-shadow .22s ease, border-color .22s ease;
+}
+/* Ring node interaction — three distinct states:
+   .is-dimmed   : non-active rings fade to 42% opacity
+   .is-active   : selected ring at full opacity with accent glow + scale
+   :hover (not active) : subtle preview glow at reduced intensity,
+                         without committing the selection (click-only model)
+   The :not(.is-active) guard ensures hover styles never override active styles. */
+.vmss-ring-node.is-dimmed { opacity:.42; }
+.vmss-ring-node.is-active { opacity:1; }
+.vmss-ring-node:hover:not(.is-active) { opacity:.75; }
+.vmss-ring-node.is-active .ring-core { filter:drop-shadow(0 0 18px var(--shadow-accent)); stroke:var(--accent); }
+.vmss-ring-node:hover:not(.is-active) .ring-core { filter:drop-shadow(0 0 8px var(--shadow-accent)); stroke:color-mix(in srgb, var(--accent) 55%, transparent); }
+.vmss-ring-node.is-active .ring-hit { transform-origin:center; transform:scale(1.015); }
+.vmss-ring-node:hover:not(.is-active) .ring-hit { transform-origin:center; transform:scale(1.008); }
+.vmss-ring-node.is-active .ring-label-chip { fill:color-mix(in srgb, var(--accent) 16%, var(--bg-secondary)); stroke:var(--accent); }
+.vmss-ring-node:hover:not(.is-active) .ring-label-chip { fill:color-mix(in srgb, var(--accent) 7%, var(--bg-secondary)); stroke:color-mix(in srgb, var(--accent) 40%, var(--border)); }
+.vmss-ring-status { display:flex; align-items:center; justify-content:space-between; gap:1rem; margin-bottom:1rem; }
+.vmss-layer-pills { display:flex; flex-wrap:wrap; gap:.6rem; }
+.vmss-layer-pill { padding:.45rem .7rem; border-radius:999px; border:1px solid var(--border); color:var(--text-secondary); background:rgba(255,255,255,0.03); font-size:.8rem; }
+.vmss-detail-stat { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:.8rem; margin-top:1rem; }
+.vmss-detail-stat > div,.vmss-readout-tile { padding:.9rem 1rem; border-radius:1rem; background:rgba(255,255,255,0.03); border:1px solid var(--border); }
+.vmss-detail-stat dt,.vmss-readout-label,.vmss-input-label { font-size:.72rem; text-transform:uppercase; letter-spacing:.16em; color:var(--text-muted); }
+.vmss-detail-stat dd,.vmss-readout-value { margin-top:.45rem; color:var(--text-primary); font-weight:700; }
+.vmss-layer-card.is-linked-active { border-color:var(--accent); box-shadow:0 24px 42px -28px var(--shadow-accent); transform:translateY(-3px); }
+.vmss-mini-flow { display:flex; flex-wrap:wrap; gap:.8rem; margin-top:1rem; }
+.vmss-mini-flow .flow-step { flex:1 1 140px; padding:.9rem 1rem; border-radius:1rem; border:1px solid var(--border); background:rgba(255,255,255,0.03); }
+.vmss-slider-grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:.9rem; }
+.vmss-range-row { padding:1rem; border-radius:1rem; border:1px solid var(--border); background:rgba(255,255,255,0.03); }
+.vmss-range-row input[type="range"] { width:100%; margin-top:.8rem; accent-color:var(--accent); }
+.vmss-range-meta { display:flex; justify-content:space-between; gap:1rem; margin-top:.5rem; color:var(--text-muted); font-size:.82rem; }
+.vmss-console-layout { display:grid; grid-template-columns:minmax(0,1.05fr) minmax(300px,0.95fr); gap:1.5rem; align-items:start; }
+.vmss-profile-buttons { display:flex; flex-wrap:wrap; gap:.65rem; }
+.vmss-chip-button { padding:.7rem 1rem; border-radius:999px; border:1px solid var(--border); color:var(--text-primary); background:rgba(255,255,255,0.03); font-weight:600; transition:transform .22s ease,border-color .22s ease,color .22s ease; }
+.vmss-chip-button:hover,.vmss-chip-button.is-active { border-color:var(--accent); color:var(--accent); transform:translateY(-1px); }
+.vmss-readouts { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:.8rem; margin-top:1rem; }
+/* STI gauge — SVG circle with stroke-dashoffset animation.
+   The gauge starts fully hidden (dashoffset = circumference) and
+   transitions to (1 - score/100) * circumference on each render.
+   .is-strong adds a brighter glow when score >= 70 (Main Layer+). */
+.vmss-gauge { position:relative; width:min(280px,100%); aspect-ratio:1; margin:0 auto; }
+.vmss-gauge svg { width:100%; height:100%; }
+.vmss-gauge-track { fill:none; stroke:rgba(255,255,255,0.08); stroke-width:14; }
+.vmss-gauge-progress { fill:none; stroke:var(--accent); stroke-width:14; stroke-linecap:round; transform:rotate(-90deg); transform-origin:50% 50%; transition:stroke-dashoffset .5s ease, stroke .3s ease; filter:drop-shadow(0 0 10px var(--shadow-accent)); }
+.vmss-gauge-center { position:absolute; inset:0; display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; }
+.vmss-score-number { font-size:clamp(2.8rem,6vw,4rem); line-height:.95; font-weight:800; color:var(--text-primary); }
+.vmss-score-caption { color:var(--text-muted); margin-top:.35rem; }
+.vmss-ladder { margin-top:1.25rem; display:grid; gap:.65rem; }
+/* Ladder step — the left-edge accent bar (::before) is transparent by default
+   and fills with accent colour when .is-current is applied. The translateX(4px)
+   nudge gives a subtle "selected" indent effect. */
+.vmss-ladder-step { position:relative; display:flex; align-items:center; justify-content:space-between; gap:1rem; padding:.85rem 1rem; border-radius:1rem; border:1px solid var(--border); background:rgba(255,255,255,0.03); overflow:hidden; transition:border-color .22s ease, transform .22s ease, background-color .22s ease; }
+.vmss-ladder-step::before { content:""; position:absolute; inset:0 auto 0 0; width:.35rem; background:transparent; transition:background .22s ease; }
+.vmss-ladder-step.is-current { border-color:var(--accent); background:color-mix(in srgb, var(--accent) 10%, var(--bg-secondary)); transform:translateX(4px); }
+.vmss-ladder-step.is-current::before { background:var(--accent); }
+.vmss-ladder-step .step-range { color:var(--text-muted); font-size:.84rem; }
+.vmss-breakdown-bars { display:grid; gap:.75rem; margin-top:1rem; }
+/* Factor breakdown bar — three-column grid: label | track | number.
+   On mobile (<960px) this reflows to two rows: label+number on row 1,
+   track spanning full width on row 2 (see mobile breakpoint below). */
+.vmss-breakdown-bar { display:grid; grid-template-columns:130px minmax(0,1fr) 56px; gap:.85rem; align-items:center; }
+.vmss-breakdown-bar .bar-track { position:relative; height:.6rem; border-radius:999px; background:rgba(255,255,255,0.06); overflow:hidden; }
+.vmss-breakdown-bar .bar-fill { position:absolute; inset:0 auto 0 0; width:0%; border-radius:999px; background:linear-gradient(90deg, var(--accent-soft), var(--accent)); transition:width .45s ease; }
+.vmss-insight-list { display:grid; gap:.75rem; margin-top:1rem; }
+.vmss-insight-item { padding:.9rem 1rem; border:1px solid var(--border); border-radius:1rem; background:rgba(255,255,255,0.03); color:var(--text-secondary); }
+.vmss-insight-item strong { color:var(--text-primary); }
+.vmss-action-row { display:flex; flex-wrap:wrap; gap:.75rem; margin-top:1rem; }
+@media (max-width: 960px) {
+  .vmss-diagram-shell,.vmss-console-layout,.vmss-slider-grid,.vmss-readouts,.vmss-detail-stat { grid-template-columns:1fr; }
+  .vmss-breakdown-bar {
+    grid-template-columns: 1fr auto;
+    grid-template-rows: auto auto;
+    gap: .4rem .85rem;
+  }
+  .vmss-breakdown-bar .bar-track {
+    grid-column: 1 / -1;
+    grid-row: 2;
+  }
+  .bar-number {
+    grid-column: 2;
+    grid-row: 1;
+    justify-self: end;
+  }
+}
+
+
+/* =========================
+   LIVE STATE HUD
+   Fixed bottom-right panel injected into document.body by initVmssHud().
+   Width capped at 21rem or viewport-minus-padding, whichever is smaller.
+   Gold glow variant activates when data-layer="+1" (Sanctuary).
+   ========================= */
+.vmss-hud {
+  position: fixed;
+  right: 1rem;
+  bottom: 1rem;
+  width: min(21rem, calc(100vw - 1.5rem));
+  z-index: 80;
+  padding: 1rem 1rem 1.05rem;
+  border-radius: 1.25rem;
+  border: 1px solid var(--border-strong);
+  background: linear-gradient(180deg, rgba(255,255,255,0.08), transparent 32%), var(--bg-elevated);
+  backdrop-filter: blur(16px);
+  box-shadow: 0 18px 50px -30px var(--shadow), inset 0 1px 0 rgba(255,255,255,0.08);
+}
+.vmss-hud[data-layer="+1"] { box-shadow: 0 18px 54px -30px rgba(243,193,95,0.55), inset 0 1px 0 rgba(255,255,255,0.08); }
+[data-theme="light"] .vmss-hud { box-shadow: 0 18px 50px -30px var(--shadow), inset 0 1px 0 rgba(255,255,255,0.5); }
+[data-theme="light"] .vmss-hud[data-layer="+1"] { box-shadow: 0 18px 54px -30px rgba(183,121,31,0.24), inset 0 1px 0 rgba(255,255,255,0.65); }
+.vmss-hud-kicker { color: var(--accent); text-transform: uppercase; letter-spacing: 0.18em; font-size: 0.72rem; margin-bottom: 0.7rem; }
+.vmss-hud-row { display:flex; justify-content:space-between; gap:1rem; padding:0.32rem 0; color:var(--text-secondary); }
+.vmss-hud-row strong { color: var(--text-primary); }
+.vmss-hud-label { color: var(--text-muted); font-size: 0.84rem; }
+.vmss-hud-actions { display:grid; grid-template-columns: 1fr 1fr; gap:0.75rem; margin-top:0.95rem; }
+.vmss-hud-btn { display:inline-flex; align-items:center; justify-content:center; min-height:2.8rem; border-radius:0.9rem; border:1px solid var(--border); background: color-mix(in srgb, var(--bg-secondary) 78%, transparent); color:var(--text-primary); font-weight:700; }
+.vmss-hud-btn.is-primary { background:linear-gradient(180deg, var(--accent-soft), var(--accent)); color:#1a1403; border-color: rgba(243,193,95,0.55); }
+.is-vmss-current { transform: translateY(-4px); border-color: rgba(243,193,95,0.55) !important; box-shadow: 0 24px 44px -32px rgba(243,193,95,0.45); }
+.vmss-live-panel { padding: 1.3rem; border-radius: 1.6rem; border:1px solid var(--border); background: linear-gradient(180deg, rgba(255,255,255,0.03), transparent 42%), var(--bg-elevated); box-shadow: 0 24px 50px -38px var(--shadow); }
+.vmss-event-buttons { display:flex; flex-wrap:wrap; gap:0.65rem; }
+.vmss-event-buttons .vmss-chip-button { flex:1 1 auto; text-align:center; }
+.vmss-randomize-btn { flex:1 1 100% !important; justify-content:center; }
+.vmss-event-divider { border:none; border-top:1px solid var(--border); margin:1.2rem 0 1rem; }
+@media (max-width: 900px) { .vmss-event-grid { grid-template-columns: 1fr; } }
+@media (max-width: 768px) {
+  .vmss-hud:not(.is-minimized) { left: 0.75rem; right: 0.75rem; bottom: 0.75rem; width:auto; }
+  .vmss-hud.is-minimized { right: 0.75rem; bottom: 0.75rem; left: auto; width: auto; }
+}
+
+
+/* =========================
+   POLISH + UX REFINEMENT
+   body starts at opacity:0 and fades in once vmss-ui-ready is applied
+   by script.js (via requestAnimationFrame after DOMContentLoaded).
+   This prevents a flash of unstyled content before the navbar/footer inject.
+   ========================= */
+body {
+  opacity: 0;
+  transition: opacity 0.35s ease, background-color 0.35s ease, color 0.35s ease;
+}
+body.vmss-ui-ready {
+  opacity: 1;
+}
+.vmss-main-section {
+  padding-top: 8.75rem !important;
+  padding-bottom: 6.5rem !important;
+}
+.vmss-main-section + .vmss-main-section {
+  padding-top: 5.25rem !important;
+}
+.vmss-content-frame > * + * {
+  margin-top: 1.15rem;
+}
+.vmss-page-intro + * {
+  margin-top: 2rem !important;
+}
+.layer-card,
+.sad-card,
+.vmss-enhanced-card,
+.vmss-panel,
+.vmss-enhanced-panel,
+.vmss-sim-panel,
+.vmss-score-card,
+.vmss-breakdown-card,
+.vmss-profile-card,
+.vmss-live-panel,
+.vmss-hud,
+.vmss-chip-button,
+.vmss-hud-btn,
+.vmss-ladder-step,
+.vmss-range-row,
+.vmss-readout-tile,
+.vmss-insight-item,
+.vmss-mini-flow .flow-step {
+  transition: transform .28s cubic-bezier(0.22, 1, 0.36, 1), box-shadow .28s cubic-bezier(0.22, 1, 0.36, 1), border-color .22s ease, background-color .22s ease, opacity .22s ease;
+}
+.layer-card:active,
+.vmss-chip-button:active,
+.vmss-hud-btn:active,
+.vmss-ring-node:active {
+  transform: translateY(0) scale(.985);
+}
+.vmss-ring-node:focus {
+  outline: none;
+}
+/* Keyboard focus outline — only shown for focus-visible (keyboard nav),
+   not for mouse clicks. vmss-ring-node:focus { outline:none } suppresses
+   the default rectangular browser outline that SVG <g> elements produce
+   on click; blur() in diagrams.js ensures it's never visible after clicks. */
+.vmss-chip-button:focus-visible,
+.vmss-hud-btn:focus-visible,
+.vmss-ring-node:focus-visible,
+.layer-card:focus-visible {
+  outline: 2px solid color-mix(in srgb, var(--accent) 78%, white 12%);
+  outline-offset: 3px;
+}
+.vmss-layer-card.is-linked-active,
+.is-vmss-current {
+  animation: vmssPulseLift .42s ease;
+}
+.vmss-ladder-step.is-current {
+  box-shadow: 0 22px 40px -34px var(--shadow-accent);
+}
+.vmss-gauge-progress.is-strong {
+  filter: drop-shadow(0 0 14px var(--shadow-accent));
+}
+.vmss-score-number,
+[data-vmss-hud-score] {
+  font-variant-numeric: tabular-nums;
+}
+.vmss-hud {
+  transform-origin: bottom right;
+  transition: transform .24s ease, opacity .24s ease, box-shadow .24s ease, border-color .24s ease, background-color .24s ease;
+}
+.vmss-hud.is-idle {
+  opacity: .78;
+}
+.vmss-hud.is-minimized {
+  width: auto;
+  min-width: 14rem;
+  padding-bottom: .9rem;
+}
+.vmss-hud.is-minimized .vmss-hud-body,
+.vmss-hud.is-minimized .vmss-hud-actions {
+  display: none;
+}
+
+/* On mobile, minimized HUD collapses to just the toggle button — no kicker text */
+@media (max-width: 768px) {
+  .vmss-hud.is-minimized {
+    min-width: 0;
+    width: auto;
+    padding: 0.45rem;
+    border-radius: 999px;
+  }
+  .vmss-hud.is-minimized .vmss-hud-kicker {
+    display: none;
+  }
+  .vmss-hud.is-minimized .vmss-hud-top {
+    margin-bottom: 0;
+    gap: 0;
+  }
+  .vmss-hud.is-minimized .vmss-hud-toggle {
+    width: 2.4rem;
+    height: 2.4rem;
+    border-radius: 999px;
+  }
+}
+.vmss-hud-top {
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:1rem;
+  margin-bottom:.35rem;
+}
+.vmss-hud-toggle {
+  width:2.2rem;
+  height:2.2rem;
+  border-radius:.8rem;
+  border:1px solid var(--border);
+  background: color-mix(in srgb, var(--bg-secondary) 82%, transparent);
+  color:var(--text-primary);
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  font-size:1rem;
+}
+/* .is-updating: brief accent border flash on each state change (triggered in script.js) */
+.vmss-hud.is-updating {
+  border-color: rgba(243,193,95,0.5);
+  box-shadow: 0 24px 60px -34px rgba(243,193,95,0.35), inset 0 1px 0 rgba(255,255,255,0.08);
+}
+.vmss-hud-event {
+  max-width: 9.5rem;
+  text-align: right;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.vmss-event-buttons .vmss-chip-button,
+.vmss-profile-buttons .vmss-chip-button {
+  min-height: 2.9rem;
+}
+.vmss-range-row {
+  background: linear-gradient(180deg, rgba(255,255,255,0.035), transparent 58%), rgba(255,255,255,0.02);
+}
+.vmss-range-row:hover,
+.vmss-readout-tile:hover,
+.vmss-insight-item:hover,
+.vmss-mini-flow .flow-step:hover {
+  border-color: var(--border-strong);
+}
+.vmss-insight-item {
+  position: relative;
+  overflow: hidden;
+}
+.vmss-insight-item::before {
+  content: "";
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: .28rem;
+  background: linear-gradient(180deg, var(--accent-soft), var(--accent));
+  opacity: .55;
+}
+.vmss-motion-soft {
+  transition: opacity .28s ease, transform .28s ease;
+}
+.vmss-flash {
+  animation: vmssFlash .52s ease;
+}
+@keyframes vmssPulseLift {
+  0% { transform: translateY(0); }
+  50% { transform: translateY(-5px); }
+  100% { transform: translateY(-3px); }
+}
+/* vmssFlash — ripple-style box-shadow pulse used on layer transitions
+   and state updates. Applied/removed programmatically via pulseElement(). */
+@keyframes vmssFlash {
+  0% { box-shadow: 0 0 0 0 rgba(243,193,95,0); }
+  35% { box-shadow: 0 0 0 8px rgba(243,193,95,0.12); }
+  100% { box-shadow: 0 0 0 0 rgba(243,193,95,0); }
+}
+/* Mobile HUD — stretches edge-to-edge at the bottom on small screens.
+   min-width:0 override allows the minimized HUD to shrink fully rather
+   than being constrained by the desktop min-width rule. */
+@media (max-width: 768px) {
+  body {
+    transform: none;
+  }
+  .vmss-main-section {
+    padding-top: 7.5rem !important;
+    padding-bottom: 5.25rem !important;
+  }
+  .vmss-main-section + .vmss-main-section {
+    padding-top: 4rem !important;
+  }
+  .vmss-hud {
+    max-width: none;
+    transform-origin: bottom center;
+  }
+  .vmss-hud.is-minimized {
+    min-width: 0;
+    transform-origin: bottom right;
+  }
+  .vmss-hud-event {
+    max-width: 7rem;
+  }
+}
+
+/* =========================
+   ACCESSIBILITY UTILITIES
+   ========================= */
+
+/**
+ * .sr-only — visually hidden but readable by screen readers.
+ * Used for aria-live regions in the HUD and STI console so score
+ * changes are announced without being visible on screen.
+ * Standard technique from the a11y community; clip:rect(0,0,0,0)
+ * is used over clip-path for broader browser support.
+ */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
