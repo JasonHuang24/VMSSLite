@@ -1,19 +1,35 @@
-/* VMSS Global Styles — Version 11.0 Lite */
+/* VMSS Global Styles — Version 11.0 Lite
+   ===================================
+   Table of Contents:
+   1. FONT IMPORT & HEADING FONT
+   2. DESIGN TOKENS (dark/light)
+   3. BASE & LAYOUT (box model, body gradient, flex order)
+   4. NAVBAR
+   5. HERO, PANELS & CARDS
+   6. BUTTONS & CTAs
+   7. TYPOGRAPHY (prose, headings, lists)
+   8. FOOTER
+   9. ACCORDIONS (simulation & FAQ cards)
+   10. BACK ARROW & MOBILE MENU
+   11. ANIMATIONS & KEYFRAMES
+   12. LAYER CARD VARIANTS & RING DIAGRAM
+   13. JUSTICE FLOW
+   14. SYSTEMS & SAD PAGE COMPONENTS
+   15. PERFORMANCE & REDUCED MOTION
+   16. INTERACTIVE DIAGRAMS & STI SIMULATION
+   17. HUD / LIVE STATE PANEL
+   18. ACCESSIBILITY
+   19. DENSITY OVERRIDES (Tailwind inline class overrides)
+   =================================== */
 
-/* Heading font — Space Grotesk */
+/* ----- 1. FONT IMPORT & HEADING FONT ----- */
 @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&display=swap');
 
 h1, h2, h3 {
   font-family: 'Space Grotesk', system-ui, sans-serif;
 }
 
-/* =========================
-   DESIGN TOKENS
-   Dark mode (default) and light mode overrides.
-   --accent / --accent-soft: gold palette used for highlights, CTAs, active states
-   --border / --border-strong: subtle borders; strong variant used for accent-adjacent elements
-   --shadow-accent: gold-tinted shadow for elements near the accent colour
-   ========================= */
+/* ----- 2. DESIGN TOKENS ----- */
 :root {
   --bg-primary: #07090f;
   --bg-secondary: #101522;
@@ -48,6 +64,7 @@ h1, h2, h3 {
   --shadow-accent: rgba(183, 121, 31, 0.14);
 }
 
+/* ----- 3. BASE & LAYOUT ----- */
 * {
   box-sizing: border-box;
 }
@@ -71,9 +88,9 @@ body {
   position: relative;
 }
 
-/* Ambient glow orbs — fixed pseudo-elements that sit behind all page content.
+/* Ambient glow orbs — fixed pseudo-elements behind all page content.
    Left orb: warm gold accent. Right orb: cool blue counterbalance.
-   Disabled on mobile (v7.3) to avoid paint cost on low-power devices. */
+   Disabled on mobile to avoid paint cost on low-power devices. */
 .vmss-page-shell::before,
 .vmss-page-shell::after {
   content: "";
@@ -132,12 +149,7 @@ main {
   width: 100%;
 }
 
-.vmss-nav {
-  position: relative;
-  top: 0;
-  left: 0;
-}
-
+/* ----- 4. NAVBAR ----- */
 .hero-bg {
   background:
     radial-gradient(circle at 20% 15%, var(--accent-glow), transparent 28%),
@@ -211,6 +223,7 @@ main {
   background: linear-gradient(180deg, var(--accent-glow), transparent);
 }
 
+/* ----- 5. HERO, PANELS & CARDS ----- */
 .vmss-home-section {
   position: relative;
 }
@@ -273,6 +286,7 @@ main {
   color: #87e2b5;
 }
 
+/* ----- 6. BUTTONS & CTAs ----- */
 .vmss-cta-primary,
 .vmss-cta-secondary,
 button#open-entry-modal,
@@ -470,6 +484,7 @@ button[type="submit"]:hover {
   box-shadow: 0 26px 42px -32px var(--shadow-accent);
 }
 
+/* ----- 7. TYPOGRAPHY ----- */
 .vmss-prose,
 .prose {
   color: var(--text-secondary) !important;
@@ -522,12 +537,13 @@ button[type="submit"]:hover {
   margin-top: 0.5rem;
 }
 
+/* ----- 8. FOOTER ----- */
 .vmss-footer {
   border-top: 1px solid var(--border);
   background: linear-gradient(180deg, rgba(255,255,255,0.03), transparent), color-mix(in srgb, var(--bg-secondary) 88%, transparent);
 }
 
-/* Simulation & FAQ accordion cards */
+/* ----- 9. ACCORDIONS ----- */
 .simulation-card,
 .faq-card {
   transition: border-color 0.22s ease, box-shadow 0.22s ease;
@@ -549,6 +565,7 @@ button[type="submit"]:hover {
   margin-top: 1rem;
 }
 
+/* ----- 10. BACK ARROW & MOBILE MENU ----- */
 .back-arrow {
   z-index: 60;
   transition: opacity 0.3s ease, transform 0.2s ease, color 0.2s ease;
@@ -586,9 +603,9 @@ button[type="submit"]:hover {
   animation: slideDown 0.28s ease-out forwards;
 }
 
+/* ----- 11. ANIMATIONS & KEYFRAMES ----- */
 /* Scroll-reveal animation — elements start invisible/offset and transition
-   in when the IntersectionObserver fires (see initReveal in script.js).
-   will-change is set in the v7.3 performance pass to hint compositing. */
+   in when the IntersectionObserver fires (see initReveal in script.js). */
 .reveal-item {
   opacity: 0;
   transform: translateY(18px);
@@ -690,8 +707,7 @@ a:hover {
   overflow-wrap: anywhere;
 }
 
-/* VMSS Layer Stack Enhancements */
-
+/* ----- 12. LAYER CARD VARIANTS & RING DIAGRAM ----- */
 .layer-card.level-positive {
   border-color: rgba(251,191,36,0.35);
   background: linear-gradient(
@@ -710,8 +726,6 @@ a:hover {
   opacity: 0.92;
 }
 
-/* VMSS Ring Diagram */
-
 .vmss-ring-diagram {
 width: 100%;
 max-width: 600px;
@@ -723,8 +737,6 @@ fill: none;
 stroke-width: 4;
 opacity: 0.9;
 }
-
-/* ring colors */
 
 .ring-sanctuary {
 stroke: var(--accent);
@@ -761,8 +773,6 @@ font-weight: 700;
 fill: var(--text-primary);
 }
 
-/* Megastructure ring styling */
-
 .ring {
   fill: none;
   stroke-width: 4;
@@ -770,16 +780,12 @@ fill: var(--text-primary);
   stroke-linecap: round;
 }
 
-/* segmented structure */
-
 .ring-main,
 .ring-noncompliance,
 .ring-predatory,
 .ring-terminal {
   stroke-dasharray: 10 6;
 }
-
-/* subtle glow */
 
 .ring-sanctuary {
   stroke: var(--accent);
@@ -813,8 +819,7 @@ fill: var(--text-primary);
   to { transform: rotate(360deg); }
 }
 
-/* VMSS Justice Flow */
-
+/* ----- 13. JUSTICE FLOW ----- */
 .vmss-flow-shell {
   border: 1px solid var(--border);
   border-radius: 2rem;
@@ -953,7 +958,7 @@ fill: var(--text-primary);
   }
 }
 
-/* VMSS Systems + SAD polish */
+/* ----- 14. SYSTEMS & SAD PAGE COMPONENTS ----- */
 .systems-hero-card,
 .sad-hero-card {
   background: linear-gradient(180deg, rgba(255,255,255,0.04), transparent 40%), var(--bg-elevated);
@@ -1268,12 +1273,7 @@ fill: var(--text-primary);
 }
 
 
-/* =========================
-   PERFORMANCE + MOTION
-   Ambient glows disabled on mobile to reduce paint cost.
-   prefers-reduced-motion kills all animations and transitions site-wide —
-   the !important overrides ensure third-party classes don't slip through.
-   ========================= */
+/* ----- 15. PERFORMANCE & REDUCED MOTION ----- */
 @media (max-width: 768px) {
   .vmss-page-shell::before,
   .vmss-page-shell::after {
@@ -1311,11 +1311,7 @@ img {
 }
 
 
-/* =========================
-   INTERACTIVE DIAGRAMS + STI SIMULATION
-   Styles for layers.html (ring diagram, detail panel) and
-   simulations.html (STI console, gauge, slider grid, factor bars).
-   ========================= */
+/* ----- 16. INTERACTIVE DIAGRAMS & STI SIMULATION ----- */
 .vmss-kicker {
   display: inline-flex;
   align-items: center;
@@ -1432,12 +1428,7 @@ img {
 }
 
 
-/* =========================
-   LIVE STATE HUD
-   Fixed bottom-right panel injected into document.body by initVmssHud().
-   Width capped at 21rem or viewport-minus-padding, whichever is smaller.
-   Gold glow variant activates when data-layer="+1" (Sanctuary).
-   ========================= */
+/* ----- 17. HUD / LIVE STATE PANEL ----- */
 .vmss-hud {
   position: fixed;
   right: 1rem;
@@ -1474,12 +1465,8 @@ img {
 }
 
 
-/* =========================
-   POLISH + UX REFINEMENT
-   body starts at opacity:0 and fades in once vmss-ui-ready is applied
-   by script.js (via requestAnimationFrame after DOMContentLoaded).
-   This prevents a flash of unstyled content before the navbar/footer inject.
-   ========================= */
+/* Body starts at opacity:0 and fades in once vmss-ui-ready is applied
+   by script.js after DOMContentLoaded. Prevents FOUC. */
 body {
   opacity: 0;
   transition: opacity 0.35s ease, background-color 0.35s ease, color 0.35s ease;
@@ -1693,17 +1680,7 @@ body.vmss-ui-ready {
   }
 }
 
-/* =========================
-   ACCESSIBILITY UTILITIES
-   ========================= */
-
-/**
- * .sr-only — visually hidden but readable by screen readers.
- * Used for aria-live regions in the HUD and STI console so score
- * changes are announced without being visible on screen.
- * Standard technique from the a11y community; clip:rect(0,0,0,0)
- * is used over clip-path for broader browser support.
- */
+/* ----- 18. ACCESSIBILITY ----- */
 .sr-only {
   position: absolute;
   width: 1px;
@@ -1716,11 +1693,7 @@ body.vmss-ui-ready {
   border: 0;
 }
 
-/* =========================
-   DENSITY OVERRIDES
-   Must be at end of file to override Tailwind inline classes.
-   Proportional tightening: smaller text, tighter gaps, same containers.
-   ========================= */
+/* ----- 19. DENSITY OVERRIDES ----- */
 
 /* Prose content headings */
 .prose h2.text-4xl {
