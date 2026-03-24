@@ -2,7 +2,7 @@
 
 A voluntary civilization framework built on moral causality, layered governance, continuity, and consequence.
 
-**Version:** 10.0 Lite
+**Version:** 11.0 Lite
 **Live site:** https://jasonhuang24.github.io/VMSSLite/
 **Full site:** https://jasonhuang24.github.io/VMSS/
 
@@ -99,7 +99,7 @@ The Five Rings is a proposed civilization model organized around five concentric
 
 **STI** — Social Trust Index. A separate ledger for non-criminal trust violations. Makes social harms legible without criminalizing them. Operates on two tracks: social trust violations (STI) and hard behavioral flags (criminal record log).
 
-**Backup Vessels** — Periodic encrypted mind-state backups. Sovereign VMSS technology. In -3 Terminal, the implant severs the backup vessel link at the hardware level — death is final.
+**Backup Vessels** — Periodic encrypted mind-state backups. Sovereign VMSS technology. Revival is binary: full fidelity or failure. In -3 Terminal, the implant severs the backup vessel link at the hardware level — death is final.
 
 **Neural Diving** — Direct mind-to-mind interface technology. Audience mode (passive) and Pilot mode (active, requires consent).
 
