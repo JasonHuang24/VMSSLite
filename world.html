@@ -36,9 +36,8 @@
       background: rgba(255,255,255,0.02);
     }
     .paper-title { font-size: 0.95rem; color: var(--text-muted); letter-spacing: 0.18em; text-transform: uppercase; }
-    .page-indicator { color: var(--accent); font-weight: 700; letter-spacing: 0.06em; }
-    .page { display: none; padding: 30px 24px 34px; min-height: 760px; }
-    .page.active { display: block; }
+    .page { padding: 30px 24px 34px; border-bottom: 1px solid var(--border); }
+    .page:last-of-type { border-bottom: none; }
     .page h2 { margin: 0 0 18px; font-size: clamp(1.8rem, 3.2vw, 2.8rem); line-height: 1.05; letter-spacing: -0.04em; color: var(--text-primary); }
     .page h3 { margin: 28px 0 10px; font-size: 1.24rem; color: var(--accent); }
     .page p, .page li { color: var(--text-secondary); }
@@ -76,29 +75,6 @@
     .table th, .table td { padding: 12px 14px; text-align: left; border-bottom: 1px solid var(--border); vertical-align: top; color: var(--text-secondary); }
     .table th { background: rgba(255,255,255,0.03); color: var(--text-muted); font-size: 0.82rem; letter-spacing: 0.12em; text-transform: uppercase; }
     .table tr:last-child td { border-bottom: 0; }
-    .pagination-wrap { padding: 18px 18px 22px; border-top: 1px solid var(--border); background: rgba(255,255,255,0.02); }
-    .pagination { display: flex; justify-content: center; align-items: center; gap: 10px; flex-wrap: wrap; }
-    .page-btn {
-      min-width: 62px; height: 52px; border: 1px solid transparent; border-radius: 14px; font-size: 1rem; font-weight: 800;
-      cursor: pointer; transition: transform 0.18s ease, opacity 0.18s ease, background-color 0.18s ease, border-color 0.18s ease;
-      box-shadow: 0 10px 24px -18px var(--shadow); color: var(--text-primary);
-    }
-    .page-btn:hover { transform: translateY(-1px); }
-    .page-btn:disabled { opacity: 0.55; cursor: not-allowed; transform: none; }
-    .page-btn.nav {
-      background: linear-gradient(180deg, rgba(255,255,255,0.04), transparent), var(--bg-tertiary);
-      border-color: var(--border-strong); min-width: 160px; color: var(--text-primary);
-    }
-    .page-btn.num {
-      background: linear-gradient(180deg, rgba(255,255,255,0.03), transparent), var(--bg-tertiary);
-      border-color: var(--border); min-width: 52px;
-    }
-    .page-btn.num.active {
-      background: linear-gradient(180deg, color-mix(in srgb, var(--accent) 86%, white), var(--accent));
-      color: #1e1300; border-color: var(--border-strong);
-    }
-    .ellipsis { min-width: 32px; text-align: center; color: var(--accent-soft); font-size: 2rem; line-height: 1; transform: translateY(-4px); }
-    .footer-note { text-align: center; color: var(--text-muted); font-size: 0.92rem; margin-top: 18px; }
 
     .trade-flow { display: grid; grid-template-columns: 1fr auto 1fr auto 1fr; align-items: center; gap: 8px; margin: 18px 0; }
     .trade-flow-card {
@@ -122,9 +98,6 @@
     }
     @media (max-width: 560px) {
       .stat-row { grid-template-columns: repeat(2, 1fr); }
-      .pagination { gap: 6px; }
-      .page-btn.num, .ellipsis { display: none; }
-      .page-btn.nav { flex: 1; min-width: 0; font-size: 0.95rem; }
     }
   </style>
 </head>
@@ -141,7 +114,6 @@
     <section class="paper">
       <div class="paper-head">
         <div class="paper-title">World Dossier</div>
-        <div class="page-indicator" id="pageIndicator">Page 1 of 9</div>
       </div>
 
       <!-- PAGE 1: Geography & Scale -->
@@ -359,10 +331,6 @@
         </div>
       </article>
 
-      <div class="pagination-wrap">
-        <div class="pagination" id="pagination"></div>
-        <div class="footer-note">Use the controls to navigate between sections of the World Dossier.</div>
-      </div>
     </section>
   </div>
   </main>
@@ -370,63 +338,6 @@
 <div id="footer-placeholder"></div>
   <script src="script.js"></script>
   <script>
-    const pages = Array.from(document.querySelectorAll('.page'));
-    const totalPages = pages.length;
-    const pagination = document.getElementById('pagination');
-    const pageIndicator = document.getElementById('pageIndicator');
-    let currentPage = 1;
-
-    function showPage(page) {
-      currentPage = Math.max(1, Math.min(totalPages, page));
-      pages.forEach((el, idx) => {
-        el.classList.toggle('active', idx + 1 === currentPage);
-      });
-      pageIndicator.textContent = `Page ${currentPage} of ${totalPages}`;
-      renderPagination();
-      const activePage = pages[currentPage - 1];
-      if (activePage) activePage.scrollTop = 0;
-    }
-
-    function createButton(label, cls, onClick, disabled = false, active = false) {
-      const btn = document.createElement('button');
-      btn.textContent = label;
-      btn.className = `page-btn ${cls}${active ? ' active' : ''}`;
-      btn.disabled = disabled;
-      btn.addEventListener('click', onClick);
-      return btn;
-    }
-
-    function renderPagination() {
-      pagination.innerHTML = '';
-      pagination.appendChild(
-        createButton('Previous', 'nav', () => showPage(currentPage - 1), currentPage === 1)
-      );
-      let start = Math.max(1, currentPage - 2);
-      let end = Math.min(totalPages, currentPage + 2);
-      if (end - start < 4) {
-        if (start === 1) {
-          end = Math.min(totalPages, start + 4);
-        } else if (end === totalPages) {
-          start = Math.max(1, end - 4);
-        }
-      }
-      for (let i = start; i <= end; i++) {
-        pagination.appendChild(
-          createButton(String(i), 'num', () => showPage(i), false, i === currentPage)
-        );
-      }
-      pagination.appendChild(
-        createButton('Next', 'nav', () => showPage(currentPage + 1), currentPage === totalPages)
-      );
-    }
-
-    renderPagination();
-
-    const hashTarget = window.location.hash ? document.querySelector(window.location.hash) : null;
-    if (hashTarget) {
-      const targetPage = Number(hashTarget.dataset.page);
-      if (targetPage) showPage(targetPage);
-    }
 
     document.querySelectorAll('a[href^="#"]').forEach((link) => {
       link.addEventListener('click', (e) => {
