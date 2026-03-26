@@ -25,7 +25,7 @@
   const LAYER_DATA = {
     '+1': {
       label:    '+1 Sanctuary',
-      range:    'STI 85\u2013100',
+      range:    'STI Floor: 85',
       summary:  'The highest-trust ring. Pre-intervention safety, elite access, and the most selective civic privileges exist here.',
       rights:   'Maximum autonomy, highest safety, premium domains',
       doctrine: 'Trust is preserved before harm completes.',
@@ -35,7 +35,7 @@
     },
     '0': {
       label:    'Main Layer (0)',
-      range:    'STI 70\u201384',
+      range:    'STI Avg: 70\u201384',
       summary:  'Baseline civilization. Full life remains available, but intervention happens after harm rather than before it.',
       rights:   'Work, family, trade, ordinary civic life',
       doctrine: 'The proving ground where moral causality remains visible.',
@@ -45,7 +45,7 @@
     },
     '-1': {
       label:    '-1 Noncompliance',
-      range:    'STI 50\u201369',
+      range:    'STI Avg: 50\u201369',
       summary:  'A lower-trust stratum for non-trivial but non-predatory violations. Material life remains stable, but status and access contract. A growing private sector and mixed population give the layer its own commercial culture.',
       rights:   'Restricted status, reduced access, active private economy',
       doctrine: 'Consequences remain permanent without collapsing civilization into chaos.',
@@ -55,7 +55,7 @@
     },
     '-2': {
       label:    '-2 Violent Offense',
-      range:    'STI 30\u201349',
+      range:    'STI Avg: 30\u201349',
       summary:  'The severe-harm tier. Institutional mediation is largely absent, replaced by private security, voluntary-resident districts, and a self-organising economy.',
       rights:   'Reduced institutional presence, predominantly private economy',
       doctrine: 'Society protects the innocent first by separating high-risk actors.',
@@ -65,7 +65,7 @@
     },
     '-3': {
       label:    '-3 Terminal',
-      range:    'STI 0\u201329',
+      range:    'STI Avg: 0\u201329',
       summary:  'The terminal layer. Minimal institutional presence, no revival, and maximum personal autonomy. A meaningful voluntary population chose -3 for its libertarian character.',
       rights:   'Minimal institutional presence; voluntary community and frontier economy',
       doctrine: 'Terminal harm yields terminal placement.',
