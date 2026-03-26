@@ -675,17 +675,30 @@ document.addEventListener('DOMContentLoaded', () => {
         if (document.getElementById('recent-applicants')) loadRecentApplicants();
 
         entryForm.reset();
-        hideEntryForm();
 
-        setTimeout(() => {
-          alert(`✅ Application Received.
-
-Welcome, citizen.
-
-Your application to The Five Rings has been recorded for review.
-
-The choice — and the consequences — are now yours.`);
-        }, 200);
+        /* Replace modal content with success state */
+        const modalBody = entryModal.querySelector('.h-full.overflow-y-auto');
+        if (modalBody) {
+          modalBody.innerHTML = `
+            <div class="flex flex-col items-center justify-center text-center py-12 px-6" style="min-height: 60vh;">
+              <div class="text-5xl mb-6">✅</div>
+              <h2 class="text-3xl font-bold text-[var(--accent)] mb-4">Application Received</h2>
+              <p class="text-xl text-[var(--text-secondary)] mb-8">Welcome, citizen. Your application to The Five Rings has been recorded for review.</p>
+              <div class="bg-[var(--bg-primary)] rounded-2xl p-8 border border-[var(--border)] mb-8 max-w-md w-full">
+                <p class="text-sm text-[var(--text-muted)] uppercase tracking-widest mb-3">Your complimentary audiobook</p>
+                <p class="text-lg text-[var(--text-secondary)] mb-5"><em>The Five Rings</em> — a 1-hour narrated introduction to the civilization.</p>
+                <a href="https://elevenreader.io/audiobooks/the-five-rings-vmss-civilization/oOhN5swRQtTpBOH91fhk"
+                   target="_blank" rel="noopener noreferrer"
+                   class="inline-block bg-[var(--accent)] hover:bg-amber-700 text-black font-bold px-8 py-3 rounded-xl transition">
+                  🎧 Listen Now
+                </a>
+              </div>
+              <p class="text-[var(--text-muted)] text-sm">The choice — and the consequences — are now yours.</p>
+              <button onclick="document.getElementById('entryModal').classList.add('hidden'); document.getElementById('entryModal').setAttribute('aria-hidden','true');"
+                      class="mt-8 text-[var(--text-muted)] hover:text-[var(--accent)] transition text-sm underline">Close</button>
+            </div>
+          `;
+        }
       } catch (err) {
         console.error('Submission error:', err);
         setMessage('Submission failed. Please try again in a moment.', true);
