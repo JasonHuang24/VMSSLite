@@ -46,31 +46,31 @@
     '-1': {
       label:    '-1 Noncompliance',
       range:    'STI 50\u201369',
-      summary:  'A lower-trust stratum for non-trivial but non-predatory violations. Material life remains stable, but status and access contract.',
-      rights:   'Restricted status, reduced access, monitored reintegration logic',
+      summary:  'A lower-trust stratum for non-trivial but non-predatory violations. Material life remains stable, but status and access contract. A growing private sector and mixed population give the layer its own commercial culture.',
+      rights:   'Restricted status, reduced access, active private economy',
       doctrine: 'Consequences remain permanent without collapsing civilization into chaos.',
       risk:     'Continued disregard for norms escalates toward containment.',
-      ariaDesc: 'Reduced privilege after lower-harm breach. Status and access contract.',
+      ariaDesc: 'Reduced privilege after lower-harm breach. Active private economy and mixed community.',
       href:     'layer--1.html'
     },
     '-2': {
       label:    '-2 Violent Offense',
       range:    'STI 30\u201349',
-      summary:  'The severe-harm tier. Citizens here have demonstrated predatory or highly dangerous conduct and lose ordinary civic trust.',
-      rights:   'Containment-focused life with sharply reduced freedoms',
+      summary:  'The severe-harm tier. Institutional mediation is largely absent, replaced by private security, voluntary-resident districts, and a self-organising economy.',
+      rights:   'Reduced institutional presence, predominantly private economy',
       doctrine: 'Society protects the innocent first by separating high-risk actors.',
       risk:     'Violence and coercion move citizens out of ordinary civic space.',
-      ariaDesc: 'Severe harm tier with harsh containment and sharply reduced freedoms.',
+      ariaDesc: 'Severe harm tier with reduced institutional presence and predominantly private economy.',
       href:     'layer--2.html'
     },
     '-3': {
       label:    '-3 Terminal',
       range:    'STI 0\u201329',
-      summary:  'The terminal layer. No safety net, no revival, and no artificial rescue from the consequences of terminal-level harm.',
-      rights:   'Minimal protections; consequence environment only',
+      summary:  'The terminal layer. Minimal institutional presence, no revival, and maximum personal autonomy. A meaningful voluntary population chose -3 for its libertarian character.',
+      rights:   'Minimal institutional presence; voluntary community and frontier economy',
       doctrine: 'Terminal harm yields terminal placement.',
       risk:     'No upward restoration into high-trust life.',
-      ariaDesc: 'Capital offense layer. No intervention, no restoration, no revival.',
+      ariaDesc: 'Terminal layer. Minimal institutional presence, voluntary community, and frontier economy.',
       href:     'layer--3.html'
     }
   };
