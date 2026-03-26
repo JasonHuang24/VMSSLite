@@ -847,7 +847,7 @@ The choice — and the consequences — are now yours.`);
         initThemeToggle();
         initMobileMenu();
         initActiveNav();
-        initVmssHud();
+        // initVmssHud(); — disabled on lite site (no live state widget)
         initVmssLayerEcho();
         initVmssLayerLinks();
         initJoinModal();
