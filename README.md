@@ -2,7 +2,7 @@
 
 A voluntary civilization framework built on moral causality, layered governance, continuity, and consequence.
 
-**Version:** 11.5 Lite
+**Version:** 14.0 Lite
 **Live site:** https://jasonhuang24.github.io/VMSSLite/
 **Full site:** https://jasonhuang24.github.io/VMSS/
 
@@ -27,9 +27,9 @@ The Five Rings is a proposed civilization model organized around five concentric
 | SADs page | ✗ | ✓ |
 | Whitepaper | Single scrollable document | 15-page paginated with glossary |
 | Simulations | 6 archetypal profiles | Full archive + historical personalities |
-| FAQ | 12 core questions | Extended with edge cases |
+| FAQ | Core + governance & identity | Extended with edge cases |
 | Roadmap | Phase summaries | Full phases with commentary |
-| Charter | All 21 articles, condensed | Full constitutional form with rationale links |
+| Charter | All 25 articles, condensed | Full constitutional form with rationale links |
 
 ---
 
@@ -43,9 +43,9 @@ The Five Rings is a proposed civilization model organized around five concentric
 | `systems.html` | Governance, economy, enforcement — condensed |
 | `simulations.html` | Six archetypal profiles, one per layer outcome |
 | `why-vmss.html` | Nine reasons in card grid |
-| `faq.html` | 12 highest-value questions |
+| `faq.html` | Core questions + governance & identity edge cases |
 | `roadmap.html` | Phase summaries with honest current state block |
-| `charter.html` | All 21 articles in clean constitutional form |
+| `charter.html` | All 25 articles in clean constitutional form |
 | `whitepaper.html` | Single scrollable 10-section document |
 | `join.html` | Voluntary entry process and application form |
 
@@ -103,7 +103,9 @@ The Five Rings is a proposed civilization model organized around five concentric
 
 **Neural Diving** — Direct mind-to-mind interface technology. Audience mode (passive) and Pilot mode (active, requires consent).
 
-**SADs** — Selective Ascension Domains. Opt-in sub-zones within +1 Sanctuary, each gated by a single measurable metric.
+**SADs** — Selective Ascension Domains. Opt-in metric-gated domains within +1 Sanctuary, each gated by a single measurable metric.
+
+**Governance** — Three-body structure: President (chief executive, drawn from Meritboard), Meritboard (50–100 members, credentialing body), Supreme Court (10 justices, edge-case jurisdiction). No elections. Competence is measured, not campaigned for.
 
 **Leakage** — The gap between stated consequence and actual consequence delivery. Starting reality: ~90%. Target by 3000: ~0.01%.
 
