@@ -2,7 +2,7 @@
 
 A voluntary civilization framework built on moral causality, layered governance, continuity, and consequence.
 
-**Version:** 14.0 Lite
+**Version:** 14.5 Lite
 **Live site:** https://jasonhuang24.github.io/VMSSLite/
 **Full site:** https://jasonhuang24.github.io/VMSS/
 
@@ -29,7 +29,7 @@ The Five Rings is a proposed civilization model organized around five concentric
 | Simulations | 6 archetypal profiles | Full archive + historical personalities |
 | FAQ | Core + governance & identity | Extended with edge cases |
 | Roadmap | Phase summaries | Full phases with commentary |
-| Charter | All 25 articles, condensed | Full constitutional form with rationale links |
+| Charter | All 27 articles, condensed | Full constitutional form with rationale links |
 
 ---
 
