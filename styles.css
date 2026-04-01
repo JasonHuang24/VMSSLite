@@ -458,10 +458,10 @@ button[type="submit"]:hover {
 .vmss-page-intro {
   padding: 2rem;
   margin-bottom: 2rem;
-  border-radius: 1.75rem;
-  border: 1px solid var(--border);
-  background: linear-gradient(180deg, rgba(255,255,255,0.03), transparent), var(--bg-elevated);
-  box-shadow: 0 26px 50px -40px var(--shadow);
+  border-radius: 0;
+  border: none;
+  background: transparent;
+  box-shadow: none;
 }
 
 .layer-card, .sad-card {
