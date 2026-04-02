@@ -677,25 +677,52 @@ document.addEventListener('DOMContentLoaded', () => {
         entryForm.reset();
 
         /* Replace modal content with success state */
-        const modalBody = entryModal.querySelector('.h-full.overflow-y-auto');
+        const modalBody = entryModal.querySelector('.entry-modal-scroll') || entryModal.querySelector('.h-full.overflow-y-auto') || entryModal.querySelector('.overflow-y-auto');
         if (modalBody) {
           modalBody.innerHTML = `
-            <div class="flex flex-col items-center justify-center text-center py-12 px-6" style="min-height: 60vh;">
-              <div class="text-5xl mb-6">✅</div>
-              <h2 class="text-3xl font-bold text-[var(--accent)] mb-4">Application Received</h2>
-              <p class="text-xl text-[var(--text-secondary)] mb-8">Welcome, citizen. Your application to The Five Rings has been recorded for review.</p>
-              <div class="bg-[var(--bg-primary)] rounded-2xl p-8 border border-[var(--border)] mb-8 max-w-md w-full">
-                <p class="text-sm text-[var(--text-muted)] uppercase tracking-widest mb-3">Your complimentary audiobook</p>
-                <p class="text-lg text-[var(--text-secondary)] mb-5"><em>The Five Rings</em> — a 1-hour narrated introduction to the civilization.</p>
+            <div class="flex flex-col items-center justify-center text-center py-8 px-6">
+              <div class="text-5xl mb-5">✅</div>
+              <h2 class="text-3xl font-bold text-[var(--accent)] mb-3">Application Received</h2>
+              <p class="text-lg text-[var(--text-secondary)] mb-6">Welcome, citizen. Your application to The Five Rings has been recorded for review.</p>
+              <div class="bg-[var(--bg-primary)] rounded-2xl p-6 border border-[var(--border)] mb-6 max-w-md w-full">
+                <p class="text-sm text-[var(--text-muted)] uppercase tracking-widest mb-2">Your complimentary audiobook</p>
+                <p class="text-base text-[var(--text-secondary)] mb-4"><em>The Five Rings</em> — a narrated introduction to the civilization and its core doctrine.</p>
                 <a href="https://elevenreader.io/audiobooks/the-five-rings-vmss-civilization/oOhN5swRQtTpBOH91fhk"
                    target="_blank" rel="noopener noreferrer"
                    class="inline-block bg-[var(--accent)] hover:bg-amber-700 text-black font-bold px-8 py-3 rounded-xl transition">
-                  🎧 Listen Now
+                  🎧 Listen Free
                 </a>
+              </div>
+              <div class="bg-[var(--bg-primary)] rounded-2xl p-6 border border-[var(--border)] mb-6 max-w-md w-full">
+                <p class="text-sm text-[var(--text-muted)] uppercase tracking-widest mb-3">The full series</p>
+                <div class="space-y-3 text-left">
+                  <div class="flex items-center justify-between">
+                    <div>
+                      <p class="text-sm font-semibold text-[var(--text-primary)]">The Trilogy (Vols. 1–3)</p>
+                      <p class="text-xs text-[var(--text-muted)]">Architecture of Consequence · The Ledger · The Intake Files</p>
+                    </div>
+                    <a href="#" class="text-sm text-[var(--accent)] hover:text-[var(--accent-soft)] transition font-medium whitespace-nowrap ml-4">Buy →</a>
+                  </div>
+                  <div class="flex items-center justify-between">
+                    <div>
+                      <p class="text-sm font-semibold text-[var(--text-primary)]">Vol. 4: Fresh Eyes</p>
+                      <p class="text-xs text-[var(--text-muted)]">Standalone — A stranger's reckoning</p>
+                    </div>
+                    <a href="#" class="text-sm text-[var(--accent)] hover:text-[var(--accent-soft)] transition font-medium whitespace-nowrap ml-4">Buy →</a>
+                  </div>
+                  <div class="flex items-center justify-between">
+                    <div>
+                      <p class="text-sm font-semibold text-[var(--text-primary)]">Vol. 5: Embodiment</p>
+                      <p class="text-xs text-[var(--text-muted)]">Standalone — Beauty & augmentation</p>
+                    </div>
+                    <a href="#" class="text-sm text-[var(--accent)] hover:text-[var(--accent-soft)] transition font-medium whitespace-nowrap ml-4">Buy →</a>
+                  </div>
+                </div>
+                <a href="audiobook.html" class="inline-block mt-4 text-sm text-[var(--text-muted)] hover:text-[var(--accent)] transition underline">View all volumes →</a>
               </div>
               <p class="text-[var(--text-muted)] text-sm">The choice — and the consequences — are now yours.</p>
               <button onclick="document.getElementById('entryModal').classList.add('hidden'); document.getElementById('entryModal').setAttribute('aria-hidden','true');"
-                      class="mt-8 text-[var(--text-muted)] hover:text-[var(--accent)] transition text-sm underline">Close</button>
+                      class="mt-6 text-[var(--text-muted)] hover:text-[var(--accent)] transition text-sm underline">Close</button>
             </div>
           `;
         }
