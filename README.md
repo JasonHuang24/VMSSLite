@@ -2,7 +2,7 @@
 
 A voluntary civilization framework built on moral causality, layered governance, continuity, and consequence.
 
-**Version:** 17.0 Lite
+**Version:** 17.1 Lite
 **Live site:** https://jasonhuang24.github.io/VMSSLite/
 **Full site:** https://jasonhuang24.github.io/VMSS/
 
@@ -25,7 +25,7 @@ The Five Rings is a proposed civilization model organized around five concentric
 | Layer dossiers with narrative stories | ✗ | ✓ |
 | Current-state technology annotations | ✗ | ✓ |
 | SADs page | ✗ | ✓ |
-| Whitepaper | Single scrollable document | 15-page paginated with glossary |
+| Whitepaper | Links to full site (33-page version) | 33-page paginated with TOC + glossary |
 | Simulations | 6 archetypal profiles | Full archive + historical personalities |
 | FAQ | Core + governance & identity | Extended with edge cases |
 | Roadmap | Phase summaries | Full phases with commentary |
@@ -46,7 +46,7 @@ The Five Rings is a proposed civilization model organized around five concentric
 | `faq.html` | Core questions + governance & identity edge cases |
 | `roadmap.html` | Phase summaries with honest current state block |
 | `charter.html` | All 28 articles in clean constitutional form |
-| `whitepaper.html` | Single scrollable 10-section document |
+| ~~`whitepaper.html`~~ | Removed — links redirect to full site's 33-page whitepaper |
 | `audiobook.html` | The Five Rings audiobook series — free intro, trilogy, standalone volumes |
 | `join.html` | Voluntary entry process and application form |
 
@@ -75,7 +75,6 @@ The Five Rings is a proposed civilization model organized around five concentric
 ├── faq.html
 ├── roadmap.html
 ├── charter.html
-├── whitepaper.html
 ├── audiobook.html
 ├── join.html
 ├── 404.html
