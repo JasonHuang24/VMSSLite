@@ -2,7 +2,7 @@
 
 A voluntary civilization framework built on moral causality, layered governance, continuity, and consequence.
 
-**Version:** 16.0 Lite
+**Version:** 17.0 Lite
 **Live site:** https://jasonhuang24.github.io/VMSSLite/
 **Full site:** https://jasonhuang24.github.io/VMSS/
 
@@ -107,7 +107,7 @@ The Five Rings is a proposed civilization model organized around five concentric
 
 **SADs** — Selective Ascension Domains. Opt-in metric-gated domains within +1 Sanctuary, each gated by a single measurable metric.
 
-**Governance** — Three-body structure: President (chief executive, drawn from Meritboard), Meritboard (50–100 members, credentialing body), Supreme Court (10 justices, edge-case jurisdiction). No elections. Competence is measured, not campaigned for.
+**Governance** — Three-body structure. The **Meritboard** is the civilization's continuously updating competence ranking with separate sub-rankings for the distinct competencies each role requires. The **President** is drawn from the top of the executive-doctrinal-leadership ranking. **Supreme Court** justices (10) are drawn from the top of the legal-interpretation ranking. Structural independence between executive and judicial branches comes from metric separation within the Meritboard, not pool separation. No elections. Competence is measured, not campaigned for.
 
 **Leakage** — The gap between stated consequence and actual consequence delivery. Starting reality: ~90%. Target by 3000: ~0.01%.
 
