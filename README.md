@@ -2,7 +2,7 @@
 
 A voluntary civilization framework built on moral causality, layered governance, continuity, and consequence.
 
-**Version:** 17.8 Lite
+**Version:** 18.0 Lite
 **Live site:** https://jasonhuang24.github.io/VMSSLite/
 **Full site:** https://jasonhuang24.github.io/VMSS/
 
