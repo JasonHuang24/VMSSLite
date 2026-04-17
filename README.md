@@ -2,7 +2,7 @@
 
 A voluntary civilization framework built on moral causality, layered governance, continuity, and consequence.
 
-**Version:** 18.0 Lite
+**Version:** 19.0 Lite
 **Live site:** https://jasonhuang24.github.io/VMSSLite/
 **Full site:** https://jasonhuang24.github.io/VMSS/
 
@@ -24,10 +24,10 @@ The Five Rings is a proposed civilization model organized around five concentric
 | STI simulation console | ✗ | ✓ |
 | Individual layer dossiers | ✗ (overview on layers page) | ✓ (5 detailed pages) |
 | SADs / MGDs page | ✗ | ✓ |
-| Whitepaper | ✗ (full site only) | 33-page paginated with TOC + glossary |
+| Whitepaper | ✗ (full site only) | 34-section paginated with TOC + glossary |
 | World page | ✗ (full site only) | International relations, military, culture |
 | Roadmap | ✗ (full site only) | 7-phase development roadmap |
-| Simulations | 6 archetypal profiles | 77 across two dossiers |
+| Simulations | 6 archetypal profiles | 81 scenarios + 32 academy questions + 29 resources (4 dossiers) |
 | FAQ | Core + governance | Extended with edge cases |
 | Charter | All 28 articles, condensed | Full constitutional form with rationale links |
 
@@ -111,7 +111,7 @@ The Five Rings is a proposed civilization model organized around five concentric
 
 ## Companion Repository
 
-The **VMSS** repository contains the full site — complete doctrine portal with interactive tools, detailed layer dossiers, STI console, current-state annotations, 33-page whitepaper, world page, and extended FAQ.
+The **VMSS** repository contains the full site — complete doctrine portal with interactive tools, detailed layer dossiers, STI console, current-state annotations, 34-section whitepaper, world page, and extended FAQ.
 
 ---
 
