@@ -1,0 +1,15 @@
+name: Lite tax-canon check
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch: {}
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Run Lite tax-canon checker
+        run: node tools/check-tax-canon.mjs
