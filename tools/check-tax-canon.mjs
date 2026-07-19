@@ -29,6 +29,9 @@ check(/controlling full record/.test(systems)
   && /complete route and obligation maps plus keyed 12-current\/36-forward Li\/Oi evidence/.test(systems)
   && /never declared pass flags/.test(systems),
   'Lite synopsis points to complete derived annual, monthly, route, and obligation evidence');
+check(/Exact-threshold Finding bounds fail/.test(systems)
+  && /each complete 36-month forward window is SHA-256-attested outside the evidence record/.test(systems),
+  'Lite synopsis preserves strict Finding boundaries and ordered forward-window attestation');
 check(/https:\/\/jasonhchronicles\.com\/VMSS\/path-2-certification-2294\.html/.test(systems),
   'Lite synopsis links the controlling generated certification');
 check(/LP-073 is historical/.test(systems) && /LP-075 is procedural only/.test(systems), 'Authority statuses are correct');
