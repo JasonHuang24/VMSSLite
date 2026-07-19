@@ -23,6 +23,14 @@ check(systems.includes(cascade) && /became active in 2295/.test(systems), 'Syste
 check(/passed Findings I&ndash;IV/.test(systems), 'Findings I–IV pass');
 check(/certified Schedule A/.test(systems), 'Schedule A certified');
 check(/independently passed B1&ndash;B6 to certify Schedule B/.test(systems), 'B1–B6 and Schedule B certified');
+check(/controlling full record/.test(systems)
+  && /exactly 30 keyed annual observations/.test(systems)
+  && /raw 12-month current and 36-month forward\/dividend windows/.test(systems)
+  && /complete route and obligation maps plus keyed 12-current\/36-forward Li\/Oi evidence/.test(systems)
+  && /never declared pass flags/.test(systems),
+  'Lite synopsis points to complete derived annual, monthly, route, and obligation evidence');
+check(/https:\/\/jasonhchronicles\.com\/VMSS\/path-2-certification-2294\.html/.test(systems),
+  'Lite synopsis links the controlling generated certification');
 check(/LP-073 is historical/.test(systems) && /LP-075 is procedural only/.test(systems), 'Authority statuses are correct');
 check(/\$10 million threshold and Savings Circulation Mandate are unchanged/.test(systems), 'Threshold and SCM are unchanged');
 check(/\+1 \/ Main<\/td><td[^>]*>50%/.test(systems), 'Sanctuary/Main rate is 50%');
