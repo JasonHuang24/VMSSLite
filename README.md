@@ -2,7 +2,9 @@
 
 A voluntary civilization framework built on moral causality, layered governance, continuity, and consequence.
 
-**Version:** 21.4 Lite
+Beginning in 2295, the top marginal tax schedule halves exactly by layer: **50%, 25%, 12.5%, and 6.25%**. The 2294 Path 2 certification cleared both LP-074 schedules; LP-073 is historical and LP-075 remains procedural, while the $10 million threshold and layer-specific Savings Circulation Mandate remain unchanged. The tax cut increases first-pass private allocation, with SCM still reaching qualifying idle savings under its existing layer-specific rules.
+
+**Version:** 21.5 Lite
 **Live site:** https://jasonhuang24.github.io/VMSSLite/
 **Full site:** https://jasonhuang24.github.io/VMSS/
 
