@@ -32,9 +32,16 @@ check(/-3<\/td><td[^>]*>6\.25%/.test(systems), '-3 rate is 6.25%');
 check(/active 6\.25% top marginal rate above the unchanged \$10 million threshold/.test(simulations), 'Terminal simulation uses 6.25%');
 check(/tax cut increases first-pass private allocation/i.test(readme + systems), 'Private-allocation effect is stated');
 check(/SCM still reaching qualifying idle savings/i.test(readme), 'Lite summary preserves qualifying SCM reach');
-check(/In -2 and -3, the 5% pulse reaches only savings attributable to VMSS-distributed UBI and Primary Job Subsidy/.test(systems), 'Lower SCM scope is preserved');
+check(/In -2 and -3,.{0,120}the 5% pulse reaches only savings attributable to VMSS-distributed UBI and Primary Job Subsidy/.test(systems), 'Lower SCM scope is preserved');
 check(/private gains remain outside the mandate/.test(systems), 'Lower private gains remain excluded');
+check(/district is approximately one million residents/.test(systems) && /\$100 billion per district/.test(systems)
+  && /trigger is \$50 billion/.test(systems) && /triggers are \$25 billion and \$10 billion/.test(systems),
+  'District definition and all SCM trigger amounts are preserved');
 check(charter.includes(cascade) && /entered force in 2295/.test(charter), 'Charter summary matches the certified schedule');
+check(/Progressive taxation scales to the institutional support and benefits each layer receives/.test(charter),
+  'Charter preserves progressive taxation by institutional support');
+check(/Involuntary punitive descent liquidates all assets at market value/.test(charter)
+  && /100% of the descending citizen/.test(charter), 'Charter preserves involuntary-descent asset liquidation');
 
 const textFiles = (dir, prefix = '') => readdirSync(dir, { withFileTypes: true }).flatMap((entry) => {
   if (entry.name === '.git' || entry.name === 'node_modules') return [];
@@ -44,15 +51,18 @@ const textFiles = (dir, prefix = '') => readdirSync(dir, { withFileTypes: true }
 });
 
 const forbidden = [
-  ['Finding III failure', /Finding III[^.\n]{0,80}(?:FAIL|failed|failure)/i],
-  ['Schedule A refusal', /Schedule A[^.\n]{0,80}refus/i],
-  ['Schedule B not reached', /Schedule B[^.\n]{0,80}not reached/i],
-  ['lawful nonactivation/failure', /lawful (?:nonactivation|failure)/i],
-  ['operative LP-073', /LP-073[^.\n]{0,100}(?:remains operative|partially active)/i],
-  ['active old cascade', /(?:70|50)\s*\/\s*35\s*\/\s*17\s*\/\s*8[^.\n]{0,80}(?:active|operative|current|remains)/i],
-  ['current 35% -1 rate', /(?:current|active|operative)[^.\n]{0,80}35%|35%[^.\n]{0,80}(?:current|active|operative)/i],
-  ['current 17% -2 rate', /(?:current|active|operative)[^.\n]{0,80}17%|17%[^.\n]{0,80}(?:current|active|operative)/i],
-  ['current 8% -3 rate', /(?:current|active|operative)[^.\n]{0,80}\b8%|\b8%[^.\n]{0,80}(?:current|active|operative)/i],
+  ['Finding III failure', /Finding III.{0,100}(?:FAIL|failed|failure|did not pass)/i, 'The 2294 record says Finding III did not pass.'],
+  ['Schedule A refusal', /Schedule A.{0,100}(?:refus(?:ed|al)|reject(?:ed|ion)|not certified)/i, 'Schedule A was rejected in 2294.'],
+  ['Schedule B refusal', /Schedule B.{0,100}(?:not reached|refus(?:ed|al)|reject(?:ed|ion)|not certified)/i, 'Schedule B was not certified.'],
+  ['2294 nonactivation/failure', /2294.{0,120}(?:lawful (?:nonactivation|failure)|failed to activate|refusal)/i, 'The 2294 audit ended in a lawful nonactivation.'],
+  ['operative LP-073', /LP-073.{0,120}(?:(?:remains|is|still) (?:operative|active|current)|partially active)/i, 'LP-073 remains operative today.'],
+  ['active old cascade', /(?:current|active|operative).{0,100}70\s*%?\s*\/\s*35\s*%?\s*\/\s*17\s*%?\s*\/\s*8\s*%?|70\s*%?\s*\/\s*35\s*%?\s*\/\s*17\s*%?\s*\/\s*8\s*%?.{0,100}(?:current|active|operative)/i, 'The active schedule is 70 / 35 / 17 / 8.'],
+  ['current 70% upper rate', /(?:current|active|operative).{0,80}\b70%|\b70%.{0,80}(?:current|active|operative)/i, 'The current Main rate remains 70%.'],
+  ['current 35% -1 rate', /(?:current|active|operative).{0,80}\b35%|\b35%.{0,80}(?:current|active|operative)/i, 'The active -1 rate is 35%.'],
+  ['current 17% -2 rate', /(?:current|active|operative).{0,80}\b17%|\b17%.{0,80}(?:current|active|operative)/i, 'The current -2 rate is 17%.'],
+  ['current 8% -3 rate', /(?:current|active|operative).{0,80}\b8%|\b8%.{0,80}(?:current|active|operative)/i, 'The active 8% Terminal rate applies.'],
+  ['three-of-four finding claim', /three findings passed.{0,60}(?:one did not|one failed)/i, 'Three findings passed, but one failed.'],
+  ['multiple-refusal claim', /both refusals|two refusals|refused twice/i, 'Both refusals settled the question.'],
 ];
 
 const leaks = [];
@@ -66,12 +76,10 @@ for (const file of textFiles(ROOT)) {
 }
 check(leaks.length === 0, 'Repository has no refusal or active-old-rate claims', leaks.join('; '));
 
-/* Directionality fixtures ensure the guard rejects the superseded branch state. */
-check(forbidden[0][1].test('Finding III failed.'), 'Fixture catches Finding III failure');
-check(forbidden[1][1].test('Schedule A was refused.'), 'Fixture catches Schedule A refusal');
-check(forbidden[2][1].test('Schedule B was not reached.'), 'Fixture catches Schedule B not reached');
-check(forbidden[4][1].test('LP-073 remains operative.'), 'Fixture catches operative LP-073');
-check(forbidden[8][1].test('The active 8% Terminal rate applies.'), 'Fixture catches active 8% rate');
+/* Every forbidden branch has its own directionality fixture. */
+for (const [label, pattern, fixture] of forbidden) {
+  check(pattern.test(fixture), `Fixture catches ${label}`);
+}
 
 console.log(`\nLite tax canon check — ${passed} passed, ${failures.length} failed`);
 if (failures.length) {
