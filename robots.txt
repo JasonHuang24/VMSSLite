@@ -2,4 +2,4 @@ User-agent: *
 Allow: /
 Disallow:
 
-Sitemap: https://jasonhuang24.github.io/VMSS/sitemap.xml
+Sitemap: https://jasonhchronicles.com/VMSSLite/sitemap.xml
